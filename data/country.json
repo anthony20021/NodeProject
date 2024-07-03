@@ -1,177 +1,177 @@
 [
     {
         "id": 1,
-        "nom": "France",
-        "capitale": "Paris",
-        "langues": ["Français"],
+        "name": "France",
+        "capital": "Paris",
+        "languagesSpoken": ["French"],
         "continent": "Europe"
     },
     {
         "id": 2,
-        "nom": "Espagne",
-        "capitale": "Madrid",
-        "langues": ["Espagnol"],
+        "name": "Spain",
+        "capital": "Madrid",
+        "languagesSpoken": ["Spanish"],
         "continent": "Europe"
     },
     {
         "id": 3,
-        "nom": "Italie",
-        "capitale": "Rome",
-        "langues": ["Italien"],
+        "name": "Italy",
+        "capital": "Rome",
+        "languagesSpoken": ["Italian"],
         "continent": "Europe"
     },
     {
         "id": 4,
-        "nom": "Allemagne",
-        "capitale": "Berlin",
-        "langues": ["Allemand"],
+        "name": "Germany",
+        "capital": "Berlin",
+        "languagesSpoken": ["German"],
         "continent": "Europe"
     },
     {
         "id": 5,
-        "nom": "Royaume-Uni",
-        "capitale": "Londres",
-        "langues": ["Anglais"],
+        "name": "United Kingdom",
+        "capital": "London",
+        "languagesSpoken": ["English"],
         "continent": "Europe"
     },
     {
         "id": 6,
-        "nom": "Canada",
-        "capitale": "Ottawa",
-        "langues": ["Anglais", "Français"],
-        "continent": "Amérique du Nord"
+        "name": "Canada",
+        "capital": "Ottawa",
+        "languagesSpoken": ["English", "French"],
+        "continent": "North America"
     },
     {
         "id": 7,
-        "nom": "États-Unis",
-        "capitale": "Washington D.C.",
-        "langues": ["Anglais"],
-        "continent": "Amérique du Nord"
+        "name": "United States",
+        "capital": "Washington D.C.",
+        "languagesSpoken": ["English"],
+        "continent": "North America"
     },
     {
         "id": 8,
-        "nom": "Mexique",
-        "capitale": "Mexico",
-        "langues": ["Espagnol"],
-        "continent": "Amérique du Nord"
+        "name": "Mexico",
+        "capital": "Mexico City",
+        "languagesSpoken": ["Spanish"],
+        "continent": "North America"
     },
     {
         "id": 9,
-        "nom": "Brésil",
-        "capitale": "Brasilia",
-        "langues": ["Portugais"],
-        "continent": "Amérique du Sud"
+        "name": "Brazil",
+        "capital": "Brasilia",
+        "languagesSpoken": ["Portuguese"],
+        "continent": "South America"
     },
     {
         "id": 10,
-        "nom": "Argentine",
-        "capitale": "Buenos Aires",
-        "langues": ["Espagnol"],
-        "continent": "Amérique du Sud"
+        "name": "Argentina",
+        "capital": "Buenos Aires",
+        "languagesSpoken": ["Spanish"],
+        "continent": "South America"
     },
     {
         "id": 11,
-        "nom": "Chili",
-        "capitale": "Santiago",
-        "langues": ["Espagnol"],
-        "continent": "Amérique du Sud"
+        "name": "Chile",
+        "capital": "Santiago",
+        "languagesSpoken": ["Spanish"],
+        "continent": "South America"
     },
     {
         "id": 12,
-        "nom": "Colombie",
-        "capitale": "Bogota",
-        "langues": ["Espagnol"],
-        "continent": "Amérique du Sud"
+        "name": "Colombia",
+        "capital": "Bogota",
+        "languagesSpoken": ["Spanish"],
+        "continent": "South America"
     },
     {
         "id": 13,
-        "nom": "Japon",
-        "capitale": "Tokyo",
-        "langues": ["Japonais"],
-        "continent": "Asie"
+        "name": "Japan",
+        "capital": "Tokyo",
+        "languagesSpoken": ["Japanese"],
+        "continent": "Asia"
     },
     {
         "id": 14,
-        "nom": "Chine",
-        "capitale": "Pékin",
-        "langues": ["Mandarin"],
-        "continent": "Asie"
+        "name": "China",
+        "capital": "Beijing",
+        "languagesSpoken": ["Chinese"],
+        "continent": "Asia"
     },
     {
         "id": 15,
-        "nom": "Inde",
-        "capitale": "New Delhi",
-        "langues": ["Hindi", "Anglais"],
-        "continent": "Asie"
+        "name": "India",
+        "capital": "New Delhi",
+        "languagesSpoken": ["Hindi", "English"],
+        "continent": "Asia"
     },
     {
         "id": 16,
-        "nom": "Russie",
-        "capitale": "Moscou",
-        "langues": ["Russe"],
+        "name": "Russia",
+        "capital": "Moscow",
+        "languagesSpoken": ["Russian"],
         "continent": "Europe"
     },
     {
         "id": 17,
-        "nom": "Australie",
-        "capitale": "Canberra",
-        "langues": ["Anglais"],
-        "continent": "Océanie"
+        "name": "Australia",
+        "capital": "Canberra",
+        "languagesSpoken": ["English"],
+        "continent": "Oceania"
     },
     {
         "id": 18,
-        "nom": "Nouvelle-Zélande",
-        "capitale": "Wellington",
-        "langues": ["Anglais", "Maori"],
-        "continent": "Océanie"
+        "name": "New Zealand",
+        "capital": "Wellington",
+        "languagesSpoken": ["English", "Maori"],
+        "continent": "Oceania"
     },
     {
         "id": 19,
-        "nom": "Afrique du Sud",
-        "capitale": "Pretoria",
-        "langues": ["Anglais", "Afrikaans", "Zulu"],
-        "continent": "Afrique"
+        "name": "South Africa",
+        "capital": "Pretoria",
+        "languagesSpoken": ["English", "Afrikaans", "Zulu", "Xhosa"],
+        "continent": "Africa"
     },
     {
         "id": 20,
-        "nom": "Égypte",
-        "capitale": "Le Caire",
-        "langues": ["Arabe"],
-        "continent": "Afrique"
+        "name": "Egypt",
+        "capital": "Cairo",
+        "languagesSpoken": ["Arabic"],
+        "continent": "Africa"
     },
     {
         "id": 21,
-        "nom": "Nigeria",
-        "capitale": "Abuja",
-        "langues": ["Anglais"],
-        "continent": "Afrique"
+        "name": "Nigeria",
+        "capital": "Abuja",
+        "languagesSpoken": ["English"],
+        "continent": "Africa"
     },
     {
         "id": 22,
-        "nom": "Kenya",
-        "capitale": "Nairobi",
-        "langues": ["Anglais", "Swahili"],
-        "continent": "Afrique"
+        "name": "Kenya",
+        "capital": "Nairobi",
+        "languagesSpoken": ["Swahili", "English"],
+        "continent": "Africa"
     },
     {
         "id": 23,
-        "nom": "Turquie",
-        "capitale": "Ankara",
-        "langues": ["Turc"],
-        "continent": "Asie"
+        "name": "Turkey",
+        "capital": "Ankara",
+        "languagesSpoken": ["Turkish"],
+        "continent": "Europe/Asia"
     },
     {
         "id": 24,
-        "nom": "Arabie Saoudite",
-        "capitale": "Riyad",
-        "langues": ["Arabe"],
-        "continent": "Asie"
+        "name": "Saudi Arabia",
+        "capital": "Riyadh",
+        "languagesSpoken": ["Arabic"],
+        "continent": "Asia"
     },
     {
         "id": 25,
-        "nom": "Indonésie",
-        "capitale": "Jakarta",
-        "langues": ["Indonésien"],
-        "continent": "Asie"
+        "name": "Indonesia",
+        "capital": "Jakarta",
+        "languagesSpoken": ["Indonesian"],
+        "continent": "Asia"
     }
 ]
