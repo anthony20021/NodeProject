@@ -1,0 +1,177 @@
+[
+    {
+        "id": 1,
+        "nom": "France",
+        "capitale": "Paris",
+        "langues": ["Français"],
+        "continent": "Europe"
+    },
+    {
+        "id": 2,
+        "nom": "Espagne",
+        "capitale": "Madrid",
+        "langues": ["Espagnol"],
+        "continent": "Europe"
+    },
+    {
+        "id": 3,
+        "nom": "Italie",
+        "capitale": "Rome",
+        "langues": ["Italien"],
+        "continent": "Europe"
+    },
+    {
+        "id": 4,
+        "nom": "Allemagne",
+        "capitale": "Berlin",
+        "langues": ["Allemand"],
+        "continent": "Europe"
+    },
+    {
+        "id": 5,
+        "nom": "Royaume-Uni",
+        "capitale": "Londres",
+        "langues": ["Anglais"],
+        "continent": "Europe"
+    },
+    {
+        "id": 6,
+        "nom": "Canada",
+        "capitale": "Ottawa",
+        "langues": ["Anglais", "Français"],
+        "continent": "Amérique du Nord"
+    },
+    {
+        "id": 7,
+        "nom": "États-Unis",
+        "capitale": "Washington D.C.",
+        "langues": ["Anglais"],
+        "continent": "Amérique du Nord"
+    },
+    {
+        "id": 8,
+        "nom": "Mexique",
+        "capitale": "Mexico",
+        "langues": ["Espagnol"],
+        "continent": "Amérique du Nord"
+    },
+    {
+        "id": 9,
+        "nom": "Brésil",
+        "capitale": "Brasilia",
+        "langues": ["Portugais"],
+        "continent": "Amérique du Sud"
+    },
+    {
+        "id": 10,
+        "nom": "Argentine",
+        "capitale": "Buenos Aires",
+        "langues": ["Espagnol"],
+        "continent": "Amérique du Sud"
+    },
+    {
+        "id": 11,
+        "nom": "Chili",
+        "capitale": "Santiago",
+        "langues": ["Espagnol"],
+        "continent": "Amérique du Sud"
+    },
+    {
+        "id": 12,
+        "nom": "Colombie",
+        "capitale": "Bogota",
+        "langues": ["Espagnol"],
+        "continent": "Amérique du Sud"
+    },
+    {
+        "id": 13,
+        "nom": "Japon",
+        "capitale": "Tokyo",
+        "langues": ["Japonais"],
+        "continent": "Asie"
+    },
+    {
+        "id": 14,
+        "nom": "Chine",
+        "capitale": "Pékin",
+        "langues": ["Mandarin"],
+        "continent": "Asie"
+    },
+    {
+        "id": 15,
+        "nom": "Inde",
+        "capitale": "New Delhi",
+        "langues": ["Hindi", "Anglais"],
+        "continent": "Asie"
+    },
+    {
+        "id": 16,
+        "nom": "Russie",
+        "capitale": "Moscou",
+        "langues": ["Russe"],
+        "continent": "Europe"
+    },
+    {
+        "id": 17,
+        "nom": "Australie",
+        "capitale": "Canberra",
+        "langues": ["Anglais"],
+        "continent": "Océanie"
+    },
+    {
+        "id": 18,
+        "nom": "Nouvelle-Zélande",
+        "capitale": "Wellington",
+        "langues": ["Anglais", "Maori"],
+        "continent": "Océanie"
+    },
+    {
+        "id": 19,
+        "nom": "Afrique du Sud",
+        "capitale": "Pretoria",
+        "langues": ["Anglais", "Afrikaans", "Zulu"],
+        "continent": "Afrique"
+    },
+    {
+        "id": 20,
+        "nom": "Égypte",
+        "capitale": "Le Caire",
+        "langues": ["Arabe"],
+        "continent": "Afrique"
+    },
+    {
+        "id": 21,
+        "nom": "Nigeria",
+        "capitale": "Abuja",
+        "langues": ["Anglais"],
+        "continent": "Afrique"
+    },
+    {
+        "id": 22,
+        "nom": "Kenya",
+        "capitale": "Nairobi",
+        "langues": ["Anglais", "Swahili"],
+        "continent": "Afrique"
+    },
+    {
+        "id": 23,
+        "nom": "Turquie",
+        "capitale": "Ankara",
+        "langues": ["Turc"],
+        "continent": "Asie"
+    },
+    {
+        "id": 24,
+        "nom": "Arabie Saoudite",
+        "capitale": "Riyad",
+        "langues": ["Arabe"],
+        "continent": "Asie"
+    },
+    {
+        "id": 25,
+        "nom": "Indonésie",
+        "capitale": "Jakarta",
+        "langues": ["Indonésien"],
+        "continent": "Asie"
+    }
+]

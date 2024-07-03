@@ -1,0 +1,343 @@
+[
+    {
+        "pays_id": 1,
+        "nom": "Tour Eiffel",
+        "entree_gratuite": false,
+        "prix": 25,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 1,
+        "nom": "Musée du Louvre",
+        "entree_gratuite": false,
+        "prix": 17,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 2,
+        "nom": "Sagrada Familia",
+        "entree_gratuite": false,
+        "prix": 26,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 2,
+        "nom": "Parc Güell",
+        "entree_gratuite": false,
+        "prix": 10,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 3,
+        "nom": "Colisée",
+        "entree_gratuite": false,
+        "prix": 16,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 3,
+        "nom": "Musée du Vatican",
+        "entree_gratuite": false,
+        "prix": 17,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 4,
+        "nom": "Brandenburger Tor",
+        "entree_gratuite": true,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 4,
+        "nom": "Musée de Pergame",
+        "entree_gratuite": false,
+        "prix": 12,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 5,
+        "nom": "Big Ben",
+        "entree_gratuite": true,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 5,
+        "nom": "British Museum",
+        "entree_gratuite": true,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 6,
+        "nom": "CN Tower",
+        "entree_gratuite": false,
+        "prix": 38,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 6,
+        "nom": "Musée des beaux-arts de l'Ontario",
+        "entree_gratuite": false,
+        "prix": 25,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 7,
+        "nom": "Statue de la Liberté",
+        "entree_gratuite": false,
+        "prix": 19,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 7,
+        "nom": "Smithsonian National Museum of Natural History",
+        "entree_gratuite": true,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 8,
+        "nom": "Chichen Itza",
+        "entree_gratuite": false,
+        "prix": 24,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 8,
+        "nom": "Musée national d'anthropologie",
+        "entree_gratuite": false,
+        "prix": 4,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 9,
+        "nom": "Cristo Redentor",
+        "entree_gratuite": false,
+        "prix": 12,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 9,
+        "nom": "Jardin botanique de Rio de Janeiro",
+        "entree_gratuite": false,
+        "prix": 2,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 10,
+        "nom": "Chutes d'Iguazu",
+        "entree_gratuite": false,
+        "prix": 20,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 10,
+        "nom": "Musée d'art latino-américain de Buenos Aires",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 11,
+        "nom": "San Cristóbal Hill",
+        "entree_gratuite": true,
+        "type": "Montagne"
+    },
+    {
+        "pays_id": 11,
+        "nom": "Musée national des beaux-arts du Chili",
+        "entree_gratuite": false,
+        "prix": 5,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 12,
+        "nom": "Cerro Monserrate",
+        "entree_gratuite": false,
+        "prix": 7,
+        "type": "Montagne"
+    },
+    {
+        "pays_id": 12,
+        "nom": "Musée de l'or",
+        "entree_gratuite": false,
+        "prix": 3,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 13,
+        "nom": "Mont Fuji",
+        "entree_gratuite": true,
+        "type": "Montagne"
+    },
+    {
+        "pays_id": 13,
+        "nom": "Musée national de Tokyo",
+        "entree_gratuite": false,
+        "prix": 6,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 14,
+        "nom": "Grande Muraille de Chine",
+        "entree_gratuite": false,
+        "prix": 40,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 14,
+        "nom": "Cité Interdite",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 15,
+        "nom": "Taj Mahal",
+        "entree_gratuite": false,
+        "prix": 15,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 15,
+        "nom": "Fort Rouge",
+        "entree_gratuite": false,
+        "prix": 5,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 16,
+        "nom": "Place Rouge",
+        "entree_gratuite": true,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 16,
+        "nom": "Musée de l'Ermitage",
+        "entree_gratuite": false,
+        "prix": 15,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 17,
+        "nom": "Opéra de Sydney",
+        "entree_gratuite": false,
+        "prix": 42,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 17,
+        "nom": "Parc national des Blue Mountains",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 18,
+        "nom": "Fiordland National Park",
+        "entree_gratuite": true,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 18,
+        "nom": "Musée Te Papa Tongarewa",
+        "entree_gratuite": true,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 19,
+        "nom": "Table Mountain",
+        "entree_gratuite": false,
+        "prix": 10,
+        "type": "Montagne"
+    },
+    {
+        "pays_id": 19,
+        "nom": "Robben Island",
+        "entree_gratuite": false,
+        "prix": 20,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 20,
+        "nom": "Pyramides de Gizeh",
+        "entree_gratuite": false,
+        "prix": 10,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 20,
+        "nom": "Musée égyptien du Caire",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 21,
+        "nom": "Parc national de Yankari",
+        "entree_gratuite": false,
+        "prix": 5,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 21,
+        "nom": "Musée national du Nigeria",
+        "entree_gratuite": false,
+        "prix": 3,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 22,
+        "nom": "Parc national du Mont Kenya",
+        "entree_gratuite": false,
+        "prix": 15,
+        "type": "Parc"
+    },
+    {
+        "pays_id": 22,
+        "nom": "Musée national de Nairobi",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 23,
+        "nom": "Sainte-Sophie",
+        "entree_gratuite": false,
+        "prix": 10,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 23,
+        "nom": "Palais de Topkapi",
+        "entree_gratuite": false,
+        "prix": 20,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 24,
+        "nom": "Mada'in Saleh",
+        "entree_gratuite": false,
+        "prix": 5,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 24,
+        "nom": "Musée national de Riyad",
+        "entree_gratuite": false,
+        "prix": 8,
+        "type": "Musée"
+    },
+    {
+        "pays_id": 25,
+        "nom": "Borobudur",
+        "entree_gratuite": false,
+        "prix": 25,
+        "type": "Monument"
+    },
+    {
+        "pays_id": 25,
+        "nom": "Temple de Prambanan",
+        "entree_gratuite": false,
+        "prix": 25,
+        "type": "Monument"
+    }
+]
