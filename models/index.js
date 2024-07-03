@@ -1,4 +1,5 @@
 import { findAllCountry, findCountryById, createCountry, deleteCountry, updateCountry } from "./countryModel";
+import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocation } from "./locationsModel";
 
 export default Model = {
     "country" : {
@@ -9,4 +10,12 @@ export default Model = {
         "update": updateCountry,
     },
     
+    "location" : {
+        "get" : getAllLocations,
+        "where" : findLocationById,
+        "fromWhere" : findLocationByCountryId, 
+        "create" : createLocation,
+        "delete": deleteLocation,
+        "update": updateLocation,
+    },
 }

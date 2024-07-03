@@ -1,0 +1,192 @@
+[
+    {
+        "idLocation": 1,
+        "idCountry": 1,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 2,
+        "idCountry": 1,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 3,
+        "idCountry": 2,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 4,
+        "idCountry": 2,
+        "type": ["Bus", "Taxi", "Walk"]
+    },
+    {
+        "idLocation": 5,
+        "idCountry": 3,
+        "type": ["Metro", "Bus"]
+    },
+    {
+        "idLocation": 6,
+        "idCountry": 3,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 7,
+        "idCountry": 4,
+        "type": ["Metro", "Bus", "Walk"]
+    },
+    {
+        "idLocation": 8,
+        "idCountry": 4,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 9,
+        "idCountry": 5,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 10,
+        "idCountry": 5,
+        "type": ["Metro", "Bus"]
+    },
+    {
+        "idLocation": 11,
+        "idCountry": 6,
+        "type": ["Metro", "Bus"]
+    },
+    {
+        "idLocation": 12,
+        "idCountry": 6,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 13,
+        "idCountry": 7,
+        "type": ["Ferry", "Bus"]
+    },
+    {
+        "idLocation": 14,
+        "idCountry": 7,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 15,
+        "idCountry": 8,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 16,
+        "idCountry": 8,
+        "type": ["Bus", "Walk"]
+    },
+    {
+        "idLocation": 17,
+        "idCountry": 9,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 18,
+        "idCountry": 9,
+        "type": ["Bus", "Taxi", "Walk"]
+    },
+    {
+        "idLocation": 19,
+        "idCountry": 10,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 20,
+        "idCountry": 10,
+        "type": ["Bus", "Walk"]
+    },
+    {
+        "idLocation": 21,
+        "idCountry": 11,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 22,
+        "idCountry": 11,
+        "type": ["Bus", "Taxi", "Walk"]
+    },
+    {
+        "idLocation": 23,
+        "idCountry": 12,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 24,
+        "idCountry": 12,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 25,
+        "idCountry": 13,
+        "type": ["Train", "Bus"]
+    },
+    {
+        "idLocation": 26,
+        "idCountry": 13,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 27,
+        "idCountry": 14,
+        "type": ["Train", "Bus"]
+    },
+    {
+        "idLocation": 28,
+        "idCountry": 14,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 29,
+        "idCountry": 15,
+        "type": ["Train", "Bus"]
+    },
+    {
+        "idLocation": 30,
+        "idCountry": 15,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 31,
+        "idCountry": 16,
+        "type": ["Metro", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 32,
+        "idCountry": 16,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 33,
+        "idCountry": 17,
+        "type": ["Ferry", "Bus", "Taxi"]
+    },
+    {
+        "idLocation": 34,
+        "idCountry": 17,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 35,
+        "idCountry": 18,
+        "type": ["Car", "Bus"]
+    },
+    {
+        "idLocation": 36,
+        "idCountry": 18,
+        "type": ["Bus", "Taxi", "Walk"]
+    },
+    {
+        "idLocation": 37,
+        "idCountry": 19,
+        "type": ["Bus", "Taxi"]
+    },
+    {
+        "idLocation": 38,
+        "idCountry": 19,
+        "type": ["Ferry", "Bus", "Taxi"]
+    }
+]
