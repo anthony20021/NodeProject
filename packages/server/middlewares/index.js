@@ -1,4 +1,7 @@
-export const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Erreur 500');
+import { loggerMiddleware } from "./loggerMiddleware.js";
+import { errorModule } from "./errorMiddleware.js";
+
+export default {
+    "error" : errorModule,
+    "logger" : loggerMiddleware,
 }

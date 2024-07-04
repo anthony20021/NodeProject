@@ -42,17 +42,32 @@ export const getAccessByLocationIdAndCountryId = (request, response) => {
     const idLocation = request.params.idLocation;
     const idCountry = request.params.idCountry;
     const access = Model.access.whereCountryLocation(idLocation, idCountry);
-    APIResponse(response, access, "Access", 200);
+    if(access.length > 0) {
+        APIResponse(response, access, "Access found", 200);
+    }
+    else{
+        APIResponse(response, null, "Access not found", 404);
+    }
 }
 
 export const getAccessByLocationId = (request, response) => {
-    const idLocation = request.params.idLocation;
+    const idLocation = request.params.id;
     const access = Model.access.whereLocation(idLocation);
-    APIResponse(response, access, "Access", 200);
+    if(access.length > 0) {
+        APIResponse(response, access, "Access found", 200);
+    }
+    else{
+        APIResponse(response, null, "Access not found", 404);
+    }
 }
 
 export const getAccessByCountryId = (request, response) => {
-    const idCountry = request.params.idCountry;
+    const idCountry = request.params.id;
     const access = Model.access.whereCountry(idCountry);
-    APIResponse(response, access, "Access", 200);
+    if(access.length > 0) {
+        APIResponse(response, access, "Access found", 200);
+    }
+    else{
+        APIResponse(response, null, "Access not found", 404);
+    }
 }

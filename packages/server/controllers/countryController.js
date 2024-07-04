@@ -1,4 +1,4 @@
-import Model from "../models/index";
+import Model from "../Models/index.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
 

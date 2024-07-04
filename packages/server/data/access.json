@@ -1,192 +1,218 @@
 [
     {
+        "id": 1,
         "idLocation": 1,
         "idCountry": 1,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 2,
         "idLocation": 2,
         "idCountry": 1,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 3,
         "idLocation": 3,
         "idCountry": 2,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 4,
         "idLocation": 4,
         "idCountry": 2,
         "type": ["Bus", "Taxi", "Walk"]
     },
     {
+        "id": 5,
         "idLocation": 5,
         "idCountry": 3,
         "type": ["Metro", "Bus"]
     },
     {
+        "id": 6,
         "idLocation": 6,
         "idCountry": 3,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 7,
         "idLocation": 7,
         "idCountry": 4,
         "type": ["Metro", "Bus", "Walk"]
     },
     {
+        "id": 8,
         "idLocation": 8,
         "idCountry": 4,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 9,
         "idLocation": 9,
         "idCountry": 5,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 10,
         "idLocation": 10,
         "idCountry": 5,
         "type": ["Metro", "Bus"]
     },
     {
+        "id": 11,
         "idLocation": 11,
         "idCountry": 6,
         "type": ["Metro", "Bus"]
     },
     {
+        "id": 12,
         "idLocation": 12,
         "idCountry": 6,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 13,
         "idLocation": 13,
         "idCountry": 7,
         "type": ["Ferry", "Bus"]
     },
     {
+        "id": 14,
         "idLocation": 14,
         "idCountry": 7,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 15,
         "idLocation": 15,
         "idCountry": 8,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 16,
         "idLocation": 16,
         "idCountry": 8,
         "type": ["Bus", "Walk"]
     },
     {
+        "id": 17,
         "idLocation": 17,
         "idCountry": 9,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 18,
         "idLocation": 18,
         "idCountry": 9,
         "type": ["Bus", "Taxi", "Walk"]
     },
     {
+        "id": 19,
         "idLocation": 19,
         "idCountry": 10,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 20,
         "idLocation": 20,
         "idCountry": 10,
         "type": ["Bus", "Walk"]
     },
     {
+        "id": 21,
         "idLocation": 21,
         "idCountry": 11,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 22,
         "idLocation": 22,
         "idCountry": 11,
         "type": ["Bus", "Taxi", "Walk"]
     },
     {
+        "id": 23,
         "idLocation": 23,
         "idCountry": 12,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 24,
         "idLocation": 24,
         "idCountry": 12,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 25,
         "idLocation": 25,
         "idCountry": 13,
         "type": ["Train", "Bus"]
     },
     {
+        "id": 26,
         "idLocation": 26,
         "idCountry": 13,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 27,
         "idLocation": 27,
         "idCountry": 14,
         "type": ["Train", "Bus"]
     },
     {
+        "id": 28,
         "idLocation": 28,
         "idCountry": 14,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 29,
         "idLocation": 29,
         "idCountry": 15,
         "type": ["Train", "Bus"]
     },
     {
+        "id": 30,
         "idLocation": 30,
         "idCountry": 15,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 31,
         "idLocation": 31,
         "idCountry": 16,
         "type": ["Metro", "Bus", "Taxi"]
     },
     {
+        "id": 32,
         "idLocation": 32,
         "idCountry": 16,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 33,
         "idLocation": 33,
         "idCountry": 17,
         "type": ["Ferry", "Bus", "Taxi"]
     },
     {
+        "id": 34,
         "idLocation": 34,
         "idCountry": 17,
         "type": ["Bus", "Taxi"]
     },
     {
+        "id": 35,
         "idLocation": 35,
         "idCountry": 18,
         "type": ["Car", "Bus"]
     },
     {
+        "id": 36,
         "idLocation": 36,
         "idCountry": 18,
         "type": ["Bus", "Taxi", "Walk"]
-    },
-    {
-        "idLocation": 37,
-        "idCountry": 19,
-        "type": ["Bus", "Taxi"]
-    },
-    {
-        "idLocation": 38,
-        "idCountry": 19,
-        "type": ["Ferry", "Bus", "Taxi"]
     }
 ]

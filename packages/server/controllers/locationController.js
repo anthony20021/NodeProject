@@ -1,16 +1,16 @@
-import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocationById } from "./locationsModel.js";
+import Model from "../Models/index.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 
-export const getAllLocations = (request, response) => {
-    const locations = getAllLocations();
+export const getLocationsAll = (request, response) => {
+    const locations = Model.locations.get();
     
     APIResponse(response, locations, "All locations", 200);
 }
 
 export const getLocationById = (request, response) => {
     const id = request.params.id;
-    const location = findLocationById(id);
+    const location = Model.locations.where(id);
 
     if (location) 
         APIResponse(response, location, "Location found", 200);
@@ -19,9 +19,9 @@ export const getLocationById = (request, response) => {
         APIResponse(response, null, "Location not found", 404);
 }
 
-export const findLocationByCountryId = (request, response) => {
+export const findLocationByCountry = (request, response) => {
     const countryId = request.params.countryId;
-    const locations = findLocationByCountryId(countryId);
+    const locations = Model.locations.fromWhere(countryId);
 
     if (locations && locations.length > 0)
         APIResponse(response, locations, "Locations found for the given country ID", 200);
@@ -30,11 +30,11 @@ export const findLocationByCountryId = (request, response) => {
         APIResponse(response, [], "No locations found for the given country ID", 404);
 }
 
-export const createLocation = (request, response) => {
+export const createALocation = (request, response) => {
     const newLocation = request.body;
 
     newLocation.id = crypto.randomUUID();
-    createLocation(newLocation);
+    Model.locations.create(newLocation);
 
     APIResponse(response, newLocation, "Location created", 201);
 }
@@ -42,16 +42,16 @@ export const createLocation = (request, response) => {
 export const deleteLocationById = (request, response) => {
     const id = request.params.id;
 
-    deleteLocation(id);
+    Model.locations.delete(id);
 
     APIResponse(response, null, "Location deleted", 204);
 }
 
-export const updateLocationById = (request, response) => {
+export const updateLocation = (request, response) => {
     const id = request.params.id;
     const location = request.body;
 
-    updateLocationById(id, location);
+    Model.locations.update(id, location);
 
     APIResponse(response, location, "Location updated", 200);
 }

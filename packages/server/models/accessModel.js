@@ -1,10 +1,10 @@
-import fs from 'fs';
+import fs, { access } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const accessFilePath = path.join(__dirname, '../data/posts.json');
+const accessFilePath = path.join(__dirname, '../data/access.json');
 
 // CRUD to get all accesses
 export const getAllAccesses = () => {
@@ -15,21 +15,27 @@ export const getAllAccesses = () => {
 // CRUD to get an access from its id
 export const findAccessById = (id) => {
     const accesses = getAllAccesses();
-    return accesses.find(a => a.id === id);
+    id = parseInt(id);
+    const access = accesses.find(a => a.id === id);
+    return access
 };
 
 // CRUD to get accesses from their country id
 export const findAccessesByCountryId = (id) => {
+    id = parseInt(id)
     const accesses = getAllAccesses();
     return accesses.filter(a => a.idCountry === id);
 };
 
 export const findAccessesByLocationId = (id) => {
+    id = parseInt(id)
     const accesses = getAllAccesses();
     return accesses.filter(a => a.idLocation === id);
 };
 
 export const findAccessesByLocationAndCountryId = (idLocation, idCountry) => {
+    idCountry = parseInt(idCountry);
+    idLocation = parseInt(idLocation);
     const accesses = getAllAccesses();
     return accesses.filter(a => a.idLocation === idLocation && a.idCountry === idCountry );
 };
@@ -43,6 +49,7 @@ export const createAccess = (access) => {
 
 // CRUD to delete an access by its id
 export const deleteAccess = (id) => {
+    id = parseInt(id)
     const accesses = getAllAccesses();
     const index = accesses.findIndex(a => a.id === id);
     if (index !== -1) {
@@ -53,6 +60,7 @@ export const deleteAccess = (id) => {
 
 // CRUD to update an access by its id
 export const updateAccess = (id, updatedAccess) => {
+    id = parseInt(id)
     const accesses = getAllAccesses();
     const index = accesses.findIndex(a => a.id === id);
     if (index !== -1) {
