@@ -58,11 +58,14 @@ const HomePage = () => {
         }
     };
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         if (selectedDepartureCountry && selectedCountry && selectedLocation) {
             const transportInfo = transportTypes.find(
                 t => t.idLocation.toString() === selectedLocation
             );
+
+            // const response = await axios.get("http://localhost:3000/accesses/"  + selectedLocation + "/" + selectedCountry);
+            // console.log(response);
 
             if (transportInfo) {
                 setMessage(`Types de transport disponibles : ${transportInfo.type}`);
