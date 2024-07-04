@@ -9,7 +9,7 @@ router.get("/:id", Controllers.locations.where);
 router.get("/country/:countryId", Controllers.locations.fromWhere);
 router.post("/", Middlewares.validationLocation, Controllers.locations.create);
 router.delete("/:id", Controllers.locations.delete);
-router.put("/:id", Controllers.locations.update);
-router.get("/photo/:id", Middlewares.validationLocation, Controllers.locations.photo);
+router.put("/:id", Middlewares.validationLocation, Controllers.locations.update);
+router.get("/photo/:id", Controllers.locations.photo);
 
 export default router;
