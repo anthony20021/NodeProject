@@ -2,7 +2,7 @@ import Model from "../models/index";
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
 
-export const getAll = (request , response) => {
+export const getAllCountries = (request , response) => {
     const countrys = Model.country.get();
     APIResponse(response, countrys, "All country", 200);
 }
