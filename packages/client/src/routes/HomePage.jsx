@@ -65,7 +65,7 @@ const HomePage = () => {
             );
 
             if (transportInfo) {
-                setMessage(`Types de transport disponibles: ${transportInfo.type}`);
+                setMessage(`Types de transport disponibles : ${transportInfo.type}`);
             } else {
                 setMessage('Aucune information de transport trouvée pour cette combinaison.');
             }
