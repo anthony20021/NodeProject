@@ -1,5 +1,7 @@
 import { getAllLocations, getLocationById, findLocationByCountryId, createLocation, deleteLocationById, updateLocationById } from "./locationController";
 import { getAllUsers, getUsersById, createUser, deleteUserById, updateUserById } from "./userController";
+import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController";
+import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController";
 
 export default Controller = {
     "locations" : {
@@ -17,5 +19,24 @@ export default Controller = {
         "create" : createUser,
         "delete": deleteUserById,
         "update": updateUserById,
+    },
+
+    "accesses" : {
+        "get" : getAllAccesses,
+        "where" : getAccessById,
+        "create" : createAccess,
+        "delete": deleteAccess,
+        "update": updateAccess,
+        "fromWhere" : getAccessByCountryId,
+        "fromWhere2" : getAccessByLocationId,
+        "fromWhere3" : getAccessByLocationIdAndCountryId,
+    },
+
+    "countries" : {
+        "get" : getAllCountries,
+        "where" : getCountryById,
+        "create" : createCountry,
+        "delete": deleteCountry,
+        "update": updateCountry,
     }
 }
