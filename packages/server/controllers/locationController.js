@@ -1,4 +1,4 @@
-import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocationById } from "./locationsModel";
+import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocationById } from "./locationsModel.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 

@@ -1,17 +1,14 @@
 {
-  "name": "tp",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server.js"
-  },
-  "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "express": "^4.19.2",
-    "nodemon": "^3.1.4"
-  }
+    "name": "mono_repos",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
+        "dev:client": "pnpm --filter views dev",
+        "dev:server": "pnpm --filter tp dev"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
 }

@@ -1,4 +1,4 @@
-import { getAllUsers, findUserById, createUser, deleteUser, updateUserById } from "./usersModel";
+import { getAllUsers, findUserById, createUser, deleteUser, updateUserById } from "./usersModel.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 
