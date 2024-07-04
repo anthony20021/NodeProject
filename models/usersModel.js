@@ -40,7 +40,7 @@ export const deleteUser = (id) => {
 };
 
 //CRUD to update a user by it's id
-export const updateUser = (id, user) => {
+export const updateUserById = (id, user) => {
     const users = getAllUsers();
     const index = users.findIndex(u => u.id === id);
 
