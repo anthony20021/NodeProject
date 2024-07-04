@@ -60,17 +60,23 @@ const HomePage = () => {
 
     const handleButtonClick = async () => {
         if (selectedDepartureCountry && selectedCountry && selectedLocation) {
-            const transportInfo = transportTypes.find(
-                t => t.idLocation.toString() === selectedLocation
-            );
-
-            // const response = await axios.get("http://localhost:3000/accesses/"  + selectedLocation + "/" + selectedCountry);
-            // console.log(response);
-
-            if (transportInfo) {
-                setMessage(`Types de transport disponibles : ${transportInfo.type}`);
-            } else {
-                setMessage('Aucune information de transport trouvée pour cette combinaison.');
+            try {
+                const response = await axios.get(`http://localhost:3000/accesses`, {
+                    params: {
+                        idCountry: selectedDepartureCountry,
+                        idLocation: selectedLocation
+                    }
+                });
+    
+                if (response.data && response.data.data && response.data.data.length > 0) {
+                    const transportInfo = response.data.data[0];
+                    setMessage(`Types de transport disponibles : ${transportInfo.type}`);
+                } else {
+                    setMessage('Aucune information de transport trouvée pour cette combinaison.');
+                }
+            } catch (error) {
+                setMessage('Erreur lors de la récupération des informations de transport.');
+                console.error('Error fetching transport info:', error);
             }
         } else {
             setMessage('Veuillez sélectionner un pays de départ, un pays de destination et une location.');
