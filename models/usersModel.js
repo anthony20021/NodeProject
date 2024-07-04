@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const postFilePath = path.join(__dirname, '../data/users.json');
+const userFilePath = path.join(__dirname, '../data/users.json');
 
 
 //CRUD to get all users

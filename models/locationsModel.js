@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const postFilePath = path.join(__dirname, '../data/posts.json');
+const locationFilePath = path.join(__dirname, '../data/locations.json');
 
 
 //CRUD to get all locations
