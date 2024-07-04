@@ -10,38 +10,58 @@ const __dirname = path.dirname(__filename);
 const countryFilePath = path.join(__dirname, '../data/countries.json');
 
 export const findAllCountry = () => {
-    const data = fs.readFileSync(countryFilePath, 'utf-8');
-    return JSON.parse(data);
+    try {
+        const data = fs.readFileSync(countryFilePath, 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        return [];
+    }
 }
 
 export const findCountryById = (id) => {
-    const countrys = findAllCountry();
-    id = parseInt(id);
-    return countrys.find(c => c.id === id);
+    try {
+        const countrys = findAllCountry();
+        id = parseInt(id);
+        return countrys.find(c => c.id === id);
+    } catch (error) {
+        return error.message;
+    }
 }
 
 export const createCountry = (country) => {
-    const countrys = findAllCountry();
-    countrys.push(country);
-    fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2));
+    try {
+        const countrys = findAllCountry();
+        countrys.push(country);
+        fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2));
+    } catch (error) {
+        return error.message;
+    }
 }
 
 export const deleteCountry = (id) => {
-    id = parseInt(id);
-    const countrys = findAllCountry();
-    const index = countrys.findIndex(c = c.id === id);
-    if(index !== -1){
-        countrys.splice(index, 1);
+    try {
+        id = parseInt(id);
+        const countrys = findAllCountry();
+        const index = countrys.findIndex(c = c.id === id);
+        if(index !== -1){
+            countrys.splice(index, 1);
+        }
+        fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2))
+    } catch (error) {
+        return error.message;
     }
-    fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2))
 }
 
 export const updateCountry = (id, country) => {
-    id = parseInt(id);
-    const countrys = findAllCountry();
-    const index = countrys.findIndex(c => c.index === id);
-    if(index !== -1){
-        countrys[index] = country;
+    try {
+        id = parseInt(id);
+        const countrys = findAllCountry();
+        const index = countrys.findIndex(c => c.index === id);
+        if(index !== -1){
+            countrys[index] = country;
+        }
+        fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2));
+    } catch (error) {
+        return error.message;
     }
-    fs.writeFileSync(countryFilePath, JSON.stringify(countrys, null, 2));
 }

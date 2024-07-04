@@ -8,63 +8,94 @@ const accessFilePath = path.join(__dirname, '../data/access.json');
 
 // CRUD to get all accesses
 export const getAllAccesses = () => {
-    const data = fs.readFileSync(accessFilePath, 'utf-8');
-    return JSON.parse(data);
+    try {
+        const data = fs.readFileSync(accessFilePath, 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        return error.message;
+    }
 };
 
 // CRUD to get an access from its id
 export const findAccessById = (id) => {
-    const accesses = getAllAccesses();
-    id = parseInt(id);
-    const access = accesses.find(a => a.id === id);
-    return access
+    try {
+        const accesses = getAllAccesses();
+        id = parseInt(id);
+        const access = accesses.find(a => a.id === id);
+        return access
+    } catch (error) {
+        return error.message;
+    }
 };
 
-// CRUD to get accesses from their country id
 export const findAccessesByCountryId = (id) => {
-    id = parseInt(id)
-    const accesses = getAllAccesses();
-    return accesses.filter(a => a.idCountry === id);
+    try {
+        id = parseInt(id)
+        const accesses = getAllAccesses();
+        return accesses.filter(a => a.idCountry === id);
+    } catch (error) {
+        return error.message;
+    }
 };
 
 export const findAccessesByLocationId = (id) => {
-    id = parseInt(id)
-    const accesses = getAllAccesses();
-    return accesses.filter(a => a.idLocation === id);
+    try {
+        id = parseInt(id)
+        const accesses = getAllAccesses();
+        return accesses.filter(a => a.idLocation === id);
+    } catch (error) {
+        return error.message;
+    }
 };
 
 export const findAccessesByLocationAndCountryId = (idLocation, idCountry) => {
-    idCountry = parseInt(idCountry);
-    idLocation = parseInt(idLocation);
-    const accesses = getAllAccesses();
-    return accesses.filter(a => a.idLocation === idLocation && a.idCountry === idCountry );
+    try {
+        idCountry = parseInt(idCountry);
+        idLocation = parseInt(idLocation);
+        const accesses = getAllAccesses();
+        return accesses.filter(a => a.idLocation === idLocation && a.idCountry === idCountry );
+    } catch (error) {
+        return error.message;
+    }
 };
 
 // CRUD to create a new access
 export const createAccess = (access) => {
-    const accesses = getAllAccesses();
-    accesses.push(access);
-    fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+    try {
+        const accesses = getAllAccesses();
+        accesses.push(access);
+        fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+    } catch (error) {
+        return error.message;
+    }
 };
 
 // CRUD to delete an access by its id
 export const deleteAccess = (id) => {
-    id = parseInt(id)
-    const accesses = getAllAccesses();
-    const index = accesses.findIndex(a => a.id === id);
-    if (index !== -1) {
-        accesses.splice(index, 1);
-        fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+    try {
+        id = parseInt(id)
+        const accesses = getAllAccesses();
+        const index = accesses.findIndex(a => a.id === id);
+        if (index !== -1) {
+            accesses.splice(index, 1);
+            fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+        }
+    } catch (error) {
+        return error.message;
     }
 };
 
 // CRUD to update an access by its id
 export const updateAccess = (id, updatedAccess) => {
-    id = parseInt(id)
-    const accesses = getAllAccesses();
-    const index = accesses.findIndex(a => a.id === id);
-    if (index !== -1) {
-        accesses[index] = { ...accesses[index], ...updatedAccess };
-        fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+    try {
+        id = parseInt(id)
+        const accesses = getAllAccesses();
+        const index = accesses.findIndex(a => a.id === id);
+        if (index !== -1) {
+            accesses[index] = { ...accesses[index], ...updatedAccess };
+            fs.writeFileSync(accessFilePath, JSON.stringify(accesses, null, 2));
+        }
+    } catch (error) {
+        return error.message;
     }
 };
