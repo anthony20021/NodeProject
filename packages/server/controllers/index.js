@@ -2,6 +2,7 @@ import { getLocationsAll, getLocationById, findLocationByCountry, createALocatio
 import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController.js";
 import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController.js";
 import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController.js";
+import { uploadPhoto } from "./photoController.js";
 
 export default {
     "locations" : {
@@ -38,5 +39,9 @@ export default {
         "create" : createCountry,
         "delete": deleteCountry,
         "update": updateCountry,
+    },
+
+    "photos" : {
+        "upload" : uploadPhoto,
     }
 }
