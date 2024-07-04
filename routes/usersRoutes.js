@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import Model from "../models/index";
+import Controllers from "../controllers/index.js";
 
 const router = Router();
 
-router.get("/", Model.users.get);
-router.get("/:id", Model.users.where);
-router.post("/", Model.users.create);
-router.delete("/:id", Model.users.delete);
-router.put("/:id", Model.users.update);
+router.get("/", Controllers.users.get);
+router.get("/:id", Controllers.users.where);
+router.post("/", Controllers.users.create);
+router.delete("/:id", Controllers.users.delete);
+router.put("/:id", Controllers.users.update);
 
 export default router;
