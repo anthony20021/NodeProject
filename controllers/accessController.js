@@ -1,6 +1,6 @@
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
-import Model from "../models/index";
+import Model from "../models/index.js";
 
 export const getAllAccesses = (request, response) => {
     const access = Model.access.get();

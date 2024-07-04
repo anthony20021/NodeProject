@@ -27,9 +27,9 @@ export default Controller = {
         "create" : createAccess,
         "delete": deleteAccess,
         "update": updateAccess,
-        "fromWhere" : getAccessByCountryId,
-        "fromWhere2" : getAccessByLocationId,
-        "fromWhere3" : getAccessByLocationIdAndCountryId,
+        "whereCountry" : getAccessByCountryId,
+        "whereLocation" : getAccessByLocationId,
+        "whereCountryLocation" : getAccessByLocationIdAndCountryId,
     },
 
     "countries" : {
