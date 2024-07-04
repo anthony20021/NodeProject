@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../css/HomePage.css';
 import Button from '../components/Button';
 import Dropdown from '../components/Dropdown';
 
 const HomePage = () => {
+    const [countries, setCountries] = useState([]);
+    const [locations, setLocations] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState("");
     const [selectedLocation, setSelectedLocation] = useState("");
 
@@ -15,13 +18,20 @@ const HomePage = () => {
         setSelectedLocation(event.target.value);
     };
 
-    const countries = [
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const countriesResponse = await axios.get("http://localhost:3000/country");
+                const locationsResponse = await axios.get('http://localhost:3000/locations');
+                setCountries(countriesResponse.data);
+                setLocations(locationsResponse.data);
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        };
 
-    ];
-
-    const locations = [
-
-    ];
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -33,11 +43,15 @@ const HomePage = () => {
                 </header>
 
                 <section className="home-section-container">
+
                     <div className="home-dropdown-container">
                         <Dropdown
                             label="Choisissez votre pays"
                             id="countrySelection"
-                            options={countries}
+                            options={countries.map(country => ({
+                                value: country.id.toString(),
+                                label: country.name
+                            }))}
                             onChange={handleCountryChange}
                             value={selectedCountry}
                         />
@@ -45,7 +59,10 @@ const HomePage = () => {
                         <Dropdown
                             label="Choisissez votre visite"
                             id="locationSelection"
-                            options={locations}
+                            options={locations.map(location => ({
+                                value: location.id.toString(),
+                                label: location.name
+                            }))}
                             onChange={handleLocationChange}
                             value={selectedLocation}
                         />
@@ -57,6 +74,7 @@ const HomePage = () => {
                             onClick={() => console.log('Je valide ma sélection')}
                         />
                     </div>
+
                 </section>
             </main>
         </>
