@@ -10,7 +10,7 @@ const postFilePath = path.join(__dirname, '../data/posts.json');
 
 //CRUD to get all locations
 export const getAllLocations = () => {
-    const data = fs.readFileSync(userFilePath, 'utf-8');
+    const data = fs.readFileSync(locationFilePath, 'utf-8');
 
     return JSON.parse(data);
 };
@@ -23,13 +23,18 @@ export const findLocationById = (id) => {
 };
 
 //CRUD to get a location from it's country id
+export const findLocationByCountryId = (id) => {
+    const locations = getAllLocations();
+
+    return locations.filter(l => l.countryId === id)
+};
 
 //CRUD to create a new location
 export const createLocation = (location) => {
     const locations = getAllLocations();
 
     locations.push(location);
-    fs.writeFileSync(userFilePath, JSON.stringify(locations, null, 2));
+    fs.writeFileSync(locationFilePath, JSON.stringify(locations, null, 2));
 };
 
 //CRUD to delete a location by it's id
@@ -39,11 +44,15 @@ export const deleteLocation = (id) => {
 
     if(index !== -1)
         locations.splice(index, 1);
-    fs.writeFileSync(userFilePath, JSON.stringify(locations, null, 2));
+    fs.writeFileSync(locationFilePath, JSON.stringify(locations, null, 2));
 };
 
 //CRUD to update a location by it's id
 export const updateLocation = (id, location) => {
     const locations = getAllLocations();
+    const index = locations.findIndex(l => l.id === id);
 
+    if(index !== -1)
+        locations[index] = location;
+    fs.writeFileSync(locationFilePath, JSON.stringify(locations, null, 2));
 };
