@@ -11,3 +11,5 @@ router.put("/", Controllers.accesses.update);
 router.get("/country/:id", Controllers.accesses.whereCountry);
 router.get("/location/:id", Controllers.accesses.whereLocation);
 router.get("/:idLocation/:idCountry", Controllers.accesses.whereCountryLocation);
+
+export default router;

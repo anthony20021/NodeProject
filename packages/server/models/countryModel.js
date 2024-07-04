@@ -16,6 +16,7 @@ export const findAllCountry = () => {
 
 export const findCountryById = (id) => {
     const countrys = findAllCountry();
+    id = parseInt(id);
     return countrys.find(c => c.id === id);
 }
 
@@ -26,6 +27,7 @@ export const createCountry = (country) => {
 }
 
 export const deleteCountry = (id) => {
+    id = parseInt(id);
     const countrys = findAllCountry();
     const index = countrys.findIndex(c = c.id === id);
     if(index !== -1){
@@ -35,6 +37,7 @@ export const deleteCountry = (id) => {
 }
 
 export const updateCountry = (id, country) => {
+    id = parseInt(id);
     const countrys = findAllCountry();
     const index = countrys.findIndex(c => c.index === id);
     if(index !== -1){

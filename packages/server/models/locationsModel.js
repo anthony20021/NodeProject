@@ -17,14 +17,14 @@ export const getAllLocations = () => {
 //CRUD to get a location from it's id
 export const findLocationById = (id) => {
     const locations = getAllLocations();
-
+    id = parseInt(id);
     return locations.find(l => l.id === id);
 };
 
 //CRUD to get a location from it's country id
 export const findLocationByCountryId = (id) => {
     const locations = getAllLocations();
-
+    id = parseInt(id);
     return locations.filter(l => l.countryId === id)
 };
 
@@ -39,8 +39,8 @@ export const createLocation = (location) => {
 //CRUD to delete a location by it's id
 export const deleteLocation = (id) => {
     const locations = getAllLocations();
+    id = parseInt(id);
     const index = locations.findIndex(l => l.id === id);
-
     if(index !== -1)
         locations.splice(index, 1);
     fs.writeFileSync(locationFilePath, JSON.stringify(locations, null, 2));
@@ -48,6 +48,7 @@ export const deleteLocation = (id) => {
 
 //CRUD to update a location by it's id
 export const updateLocation = (id, location) => {
+    id = parseInt(id);
     const locations = getAllLocations();
     const index = locations.findIndex(l => l.id === id);
 

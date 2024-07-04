@@ -1,24 +1,24 @@
-import { getAllLocations, getLocationById, findLocationByCountryId, createLocation, deleteLocationById, updateLocationById } from "./locationController";
-import { getAllUsers, getUsersById, createUser, deleteUserById, updateUserById } from "./userController";
-import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController";
-import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController";
+import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation } from "./locationController.js";
+import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController.js";
+import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController.js";
+import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController.js";
 
-export default Controller = {
+export default {
     "locations" : {
-        "get" : getAllLocations,
+        "get" : getLocationsAll,
         "where" : getLocationById,
-        "fromWhere" : findLocationByCountryId, 
-        "create" : createLocation,
+        "fromWhere" : findLocationByCountry, 
+        "create" : createALocation,
         "delete": deleteLocationById,
-        "update": updateLocationById,
+        "update": updateLocation,
     },
 
     "users" : {
-        "get" : getAllUsers,
+        "get" : getUsers,
         "where" : getUsersById,
-        "create" : createUser,
+        "create" : createAUser,
         "delete": deleteUserById,
-        "update": updateUserById,
+        "update": updateUser,
     },
 
     "accesses" : {

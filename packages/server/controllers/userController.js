@@ -1,16 +1,17 @@
-import { getAllUsers, findUserById, createUser, deleteUser, updateUserById } from "./usersModel.js";
+import Model from "../Models/index.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 
-export const getAllUsers = (request, response) => {
-    const users = getAllUsers();
+export const getUsers = (request, response) => {
+    const users = Model.users.get();
+    
     
     APIResponse(response, users, "All users", 200);
 }
 
 export const getUsersById = (request, response) => {
     const id = request.params.id;
-    const user = findUserById(id);
+    const user = Model.users.where(id);
 
     if (user) 
         APIResponse(response, user, "User found", 200);
@@ -19,11 +20,11 @@ export const getUsersById = (request, response) => {
         APIResponse(response, null, "User not found", 404);
 }
 
-export const createUser = (request, response) => {
+export const createAUser = (request, response) => {
     const newUser = request.body;
 
     newUser.id = crypto.randomUUID();
-    pushUser(newUser);
+    Model.users.create(newUser);
 
     APIResponse(response, newUser, "User created", 201);
 }
@@ -31,16 +32,16 @@ export const createUser = (request, response) => {
 export const deleteUserById = (request, response) => {
     const id = request.params.id;
 
-    deleteUser(id);
+    Model.users.delete(id);
 
     APIResponse(response, null, "User deleted", 204);
 }
 
-export const updateUserById = (request, response) => {
+export const updateUser = (request, response) => {
     const id = request.params.id;
     const user = request.body;
 
-    updateUsers(id, user);
+    Model.users.update(id, user);
 
     APIResponse(response, user, "User updated", 200);
 }
