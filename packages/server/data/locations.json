@@ -15,7 +15,9 @@
     "name": "Musée du Louvre",
     "freeEntry": false,
     "price": 17,
-    "type": "Museum"
+    "type": "Museum",
+    "photoName": "1720105927387-x5hbxn0aen.jpg",
+    "photoType": "image/jpeg"
   },
   {
     "id": 3,
