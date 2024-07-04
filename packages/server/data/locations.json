@@ -5,7 +5,9 @@
     "name": "Tour Eiffel",
     "freeEntry": false,
     "price": 25,
-    "type": "Monument"
+    "type": "Monument",
+    "photoName": "1720101717044-tn4etd9kor.png",
+    "photoType": "image/png"
   },
   {
     "id": 2,

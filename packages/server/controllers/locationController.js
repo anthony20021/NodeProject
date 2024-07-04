@@ -1,8 +1,15 @@
 import Model from "../Models/index.js";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
+import fs from "fs";
+import path from "path";
 import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename)
+
+const uploadDir = path.join(__dirname, '../uploads');
 
 export const getLocationsAll = (request, response) => {
     const locations = Model.locations.get();
@@ -65,7 +72,7 @@ export const getPhoto = (request, response) => {
     if (location) {
         const photoName = location.photoName;
         const photoType = location.photoType;
-        const file = fs.readFileSync(path.join(__dirname, "uploads", photoName));
+        const file = fs.readFileSync(path.join(uploadDir, photoName));
         response.writeHead(200, {"Content-Type": photoType});
         response.end(file);
         APIResponse(response, location, "Location found", 200);

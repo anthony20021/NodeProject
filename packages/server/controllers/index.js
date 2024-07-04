@@ -1,4 +1,4 @@
-import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation } from "./locationController.js";
+import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation, getPhoto } from "./locationController.js";
 import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController.js";
 import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController.js";
 import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController.js";
@@ -12,6 +12,7 @@ export default {
         "create" : createALocation,
         "delete": deleteLocationById,
         "update": updateLocation,
+        "photo" : getPhoto,
     },
 
     "users" : {
