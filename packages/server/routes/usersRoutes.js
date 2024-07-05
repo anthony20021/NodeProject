@@ -4,7 +4,7 @@ import Middlewares from '../middlewares/index.js';
 
 const router = Router();
 
-router.get("/", Controllers.users.get);
+router.get("/", Middlewares.userAdmin, Controllers.users.get);
 router.get("/:id", Controllers.users.where);
 router.post("/", Middlewares.validationUser, Controllers.users.create);
 router.delete("/:id", Controllers.users.delete);
