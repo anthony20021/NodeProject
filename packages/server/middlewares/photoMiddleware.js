@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 1024 * 1024 * 15 }, // Limite de 5 Mo
+    limits: { fileSize: 1024 * 1024 * 15 }, // Limite de 15 Mo
     fileFilter: (req, file, cb) => {
         const fileTypes = /jpeg|jpg|png/;
         const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
