@@ -5,7 +5,8 @@ import {
     validationLocationMiddleware, 
     validationUserMiddleware, 
     validationAccessMiddleware, 
-    validationCountriesMiddleware 
+    validationCountriesMiddleware,
+    userAdminMiddleware
   } from "./controlMiddleware.js";
 
 export default {
@@ -17,4 +18,5 @@ export default {
     "validationUser" : validationUserMiddleware,
     "validationAccess" : validationAccessMiddleware,
     "validationCountries" : validationCountriesMiddleware,
+    "userAdmin" : userAdminMiddleware,
 }
