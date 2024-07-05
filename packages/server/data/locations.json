@@ -25,7 +25,9 @@
     "name": "Sagrada Familia",
     "freeEntry": false,
     "price": 26,
-    "type": "Monument"
+    "type": "Monument",
+    "photoName": "1720169703041-tx6k2ox1uk.png",
+    "photoType": "image/png"
   },
   {
     "id": 4,
