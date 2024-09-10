@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
         "dev:client": "pnpm --filter views dev",
-        "dev:server": "pnpm --filter tp dev"
+        "dev:server": "pnpm --filter tp dev",
     },
     "devDependencies": {
         "concurrently": "^8.2.2"
