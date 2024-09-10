@@ -91,7 +91,6 @@ export const getPhoto = (request, response) => {
             const file = fs.readFileSync(path.join(uploadDir, photoName));
             response.writeHead(200, {"Content-Type": photoType});
             response.end(file);
-            APIResponse(response, location, "Location found", 200);
         }
         else{
             APIResponse(response, null, "Location not found", 404);
