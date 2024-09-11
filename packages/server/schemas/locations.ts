@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 import { ILocation } from "../types/ILocation";
 
 const locationSchema: Schema = new Schema({
@@ -8,7 +8,7 @@ const locationSchema: Schema = new Schema({
     type : { type: String, required: true},
     photoName: { type: String, required: true},
     photoType: { type: String, required: true},
-    countryId: { type: Schema.Types.ObjectId, ref: 'Country', required: true },
+    countryId: { type: Types.ObjectId, ref: 'Country', required: true },
 });
 
 export default mongoose.model<ILocation>('Location', locationSchema);

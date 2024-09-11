@@ -6,7 +6,7 @@ import { IUser } from "../types/IUser";
 //CRUD to get all users
 export const getAllUsers = async (): Promise<IUser[]> => {
     try {
-        return User.find().select("name email").exec();
+        return User.find().select("name firstName email").exec();
     } catch (error) {
         console.error(error.message);
         return error.message;
@@ -14,8 +14,13 @@ export const getAllUsers = async (): Promise<IUser[]> => {
 };
 
 //CRUD to get a user from it's id
-export const findUserById = (id) => {
+export const findUserById = async (id: Types.ObjectId): Promise<{ user: IUser } | null> => {
     try {
+        const user = await User.findById(id).select('name firstName email').exec()
+
+        if (!user) 
+            return null;
+        return {user: user.toObject()};
 
     } catch (error) {
         console.error(error.message);
@@ -24,9 +29,9 @@ export const findUserById = (id) => {
 };
 
 //CRUD to create a new user
-export const createUser = (user) => {
+export const createUser = (user: Partial<IUser>) => {
     try {
-        
+        return User.create(user);
     } catch (error) {
         console.error(error.message);
         return error.message;
@@ -34,21 +39,30 @@ export const createUser = (user) => {
 };
 
 //CRUD to delete a user by it's id
-export const deleteUser = (id) => {
+export const deleteUser = (id: Types.ObjectId): Promise<{ deletedCount: number }> => {
     try {
-
-    } catch (error) {
-        console.error(error.message);
-        return [];
-    }
-};
-
-//CRUD to update a user by it's id
-export const updateUser = (id, user) => {
-    try {
-
+        return User.deleteOne({_id: id});
     } catch (error) {
         console.error(error.message);
         return error.message;
     }
 };
+
+//CRUD to update a user by it's id
+export const updateUser = async (id: Types.ObjectId, userData: Partial<IUser>) => {
+    try {
+        return User.findByIdAndUpdate(id, userData, { new: true }).exec();
+    } catch (error) {
+        console.error(error.message);
+        return error.message;
+    }
+};
+
+export const findByCredentials = async (email: string): Promise<any> => {
+    try {
+        return User.findOne({ email }).select("password").exec();
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
