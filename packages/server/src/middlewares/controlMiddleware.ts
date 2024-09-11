@@ -17,8 +17,8 @@ export const validationCountriesMiddleware = (req : Request, res : Response, nex
 }
 
 export const validationAccessMiddleware = (req : Request, res : Response, next : NextFunction) => {
-    const { idLocation, idCountry, type } = req.body;
-    if (!idLocation || !idCountry || !type || type.length === 0) {
+    const { idLocation, idCountry, category } = req.body;
+    if (!idLocation || !idCountry || !category || category.length === 0) {
         return res.status(400).json({ message: "Formulaire incorrect" });
     }
     next();
