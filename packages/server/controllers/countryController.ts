@@ -1,5 +1,5 @@
-import Model from "../models/index.js";
-import { APIResponse } from "../utils/response.js";
+import Model from "../models/index.ts";
+import { APIResponse } from "../utils/response.ts";
 import crypto from "crypto";
 import { Request, Response} from 'express';
 import { Types } from "mongoose";

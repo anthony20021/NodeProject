@@ -1,6 +1,6 @@
 import path from 'path';
 import multer from 'multer';
-import Models from '../models/index.js';
+import Models from '../models/index.ts';
 import { Request, Response, NextFunction } from 'express';
 
 const generateRandomFileName = () => {

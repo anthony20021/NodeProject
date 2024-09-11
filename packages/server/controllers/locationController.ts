@@ -1,5 +1,6 @@
 import Model from "../models/index.ts";
-import { APIResponse } from "../utils/response.ts";
+import Middlewares from "../middlewares/index.ts";
+import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 import fs from "fs";
 import path from "path";
