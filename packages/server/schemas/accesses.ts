@@ -2,8 +2,8 @@ import mongoose, { Schema, Types } from "mongoose";
 import { IAccess } from "../types/IAccess";
 
 const accessSchema: Schema = new Schema({
-    locationId: { type: Types.ObjectId, required: true, unique: true },
-    countryId: { type: Types.ObjectId, required: true, unique: true  },
+    locationId: { type: Types.ObjectId, required: true, unique: true, ref: 'Location'  },
+    countryId: { type: Types.ObjectId, required: true, unique: true, ref: 'Country'  },
     category: { type: String, required: true}
 });
 
