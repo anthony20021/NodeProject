@@ -12,19 +12,19 @@ const __dirname = path.dirname(__filename)
 
 const uploadDir = path.join(__dirname, '../uploads');
 
-export const getLocationsAll = (request, response) => {
+export const getLocationsAll = async (request, response) => {
     try {
-        const locations = Model.locations.get();
+        const locations = await Model.locations.get();
         APIResponse(response, locations, "All locations", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getLocationById = (request, response) => {
+export const getLocationById = async (request, response) => {
     try {
         const id = request.params.id;
-        const location = Model.locations.where(id);
+        const location = await Model.locations.where(id);
         if (location) 
             APIResponse(response, location, "Location found", 200);
         else
@@ -34,10 +34,10 @@ export const getLocationById = (request, response) => {
     }
 }
 
-export const findLocationByCountry = (request, response) => {
+export const findLocationByCountry = async (request, response) => {
     try {
         const countryId = request.params.countryId;
-        const locations = Model.locations.fromWhere(countryId);
+        const locations = await Model.locations.fromWhere(countryId);
         if (locations && locations.length > 0)
             APIResponse(response, locations, "Locations found for the given country ID", 200);
         
@@ -48,42 +48,42 @@ export const findLocationByCountry = (request, response) => {
     }
 }
 
-export const createALocation = (request, response) => {
+export const createALocation = async (request, response) => {
     try {
         const newLocation = request.body;
         newLocation.id = crypto.randomUUID();
-        Model.locations.create(newLocation);
+        await Model.locations.create(newLocation);
         APIResponse(response, newLocation, "Location created", 201);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const deleteLocationById = (request, response) => {
+export const deleteLocationById = async (request, response) => {
     try {
         const id = request.params.id;
-        Model.locations.delete(id);
+        await Model.locations.delete(id);
         APIResponse(response, null, "Location deleted", 204);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const updateLocation = (request, response) => {
+export const updateLocation = async (request, response) => {
     try {
         const id = request.params.id;
         const location = request.body;
-        Model.locations.update(id, location);
+        await Model.locations.update(id, location);
         APIResponse(response, location, "Location updated", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getPhoto = (request, response) => {
+export const getPhoto = async (request, response) => {
     try {
         const id = request.params.id;
-        const location = Model.locations.where(id);
+        const location = await Model.locations.where(id);
         
         if (location) {
             const photoName = location.photoName;
