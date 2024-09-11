@@ -1,6 +1,7 @@
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
 import Model from "../models/index.js";
+import { Types } from "mongoose";
 
 export const getAllAccesses = (request, response) => {
     try {
@@ -13,7 +14,7 @@ export const getAllAccesses = (request, response) => {
 
 export const getAccessById = (request, response) => {
     try {
-        const id = request.params.id;
+        const id : Types.ObjectId = request.params.id;
         const access = Model.access.where(id);
         if(access){
             APIResponse(response, access, "Access", 200);
