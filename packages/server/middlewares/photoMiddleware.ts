@@ -3,8 +3,8 @@ import multer from 'multer';
 import Models from '../models/index.js';
 
 const generateRandomFileName = () => {
-    const randomString = Math.random().toString(36).substring(2, 15);
-    const timestamp = Date.now();
+    const randomString : string = Math.random().toString(36).substring(2, 15);
+    const timestamp : Date = Date.now();
     return `${timestamp}-${randomString}`;
 };
 
@@ -13,8 +13,8 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
-        const randomFileName = generateRandomFileName();
-        const extension = path.extname(file.originalname);
+        const randomFileName : string = generateRandomFileName();
+        const extension : string = path.extname(file.originalname);
         cb(null, randomFileName + extension);
     }
 });
@@ -23,9 +23,9 @@ const upload = multer({
     storage: storage,
     limits: { fileSize: 1024 * 1024 * 15 }, // Limite de 15 Mo
     fileFilter: (req, file, cb) => {
-        const fileTypes = /jpeg|jpg|png/;
-        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-        const mimetype = fileTypes.test(file.mimetype);
+        const fileTypes : RegExp = /jpeg|jpg|png/;
+        const extname : string = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype : string = fileTypes.test(file.mimetype);
 
         if (mimetype && extname) {
             return cb(null, true);
@@ -35,15 +35,15 @@ const upload = multer({
     }
 });
 
-export const updateLocationWithPhotoInfo = async (req, res, next) => {
+export const updateLocationWithPhotoInfo = async (req : any, res : any, next : any) => {
     try {
         if (!req.file) {
             return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        const locationId = parseInt(req.params.id);
+        const locationId : number = parseInt(req.params.id);
 
-        const locationToUpdate = Models.locations.where(locationId);
+        const locationToUpdate : any = Models.locations.where(locationId);
         if (!locationToUpdate) {
             return res.status(404).json({ message: 'Location not found' });
         }
