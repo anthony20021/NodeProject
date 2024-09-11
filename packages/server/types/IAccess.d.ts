@@ -1,8 +1,7 @@
 import { Document, Types } from "mongoose";
 
 export interface IAccess extends Document {
-    id: Types.ObjectId;
-    idLocation: number;
-    idCountry: number;
+    idLocation: Types.ObjectId;
+    idCountry: Types.ObjectId;
     type: string;
 }
