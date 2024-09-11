@@ -1,9 +1,11 @@
-import crypto from 'crypto';
 import Model from "../models/index";
-
+import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { Types } from "mongoose";
-import { APIResponse } from "../utils/response";
+import { APIResponse, hashPassword, verifyPassword } from "../utils/response";
+import { env } from "../config/env";
+
+const { JWT_SECRET, NODE_ENV } = env;
 
 export const getUsers = async (response: Response) => {
     try {
