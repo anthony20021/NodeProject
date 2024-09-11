@@ -33,7 +33,6 @@ export const createAUser = async (request: Request, response: Response) => {
     try {
         const newUser = request.body;
     
-        newUser.id = crypto.randomUUID();
         await Model.users.create(newUser);
     
         APIResponse(response, newUser, "User created", 201);

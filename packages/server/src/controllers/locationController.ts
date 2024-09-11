@@ -15,6 +15,7 @@ export const getLocationsAll = async (request : Request, response : Response) =>
         const locations = await Model.locations.get();
         APIResponse(response, locations, "All locations", 200);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -28,6 +29,7 @@ export const getLocationById = async (request : Request, response : Response) =>
         else
             APIResponse(response, null, "Location not found", 404);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -42,6 +44,7 @@ export const findLocationByCountry = async (request : Request, response : Respon
         else
             APIResponse(response, [], "No locations found for the given country ID", 404);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -49,10 +52,10 @@ export const findLocationByCountry = async (request : Request, response : Respon
 export const createALocation = async (request : Request, response : Response) => {
     try {
         const newLocation = request.body;
-        newLocation.id = crypto.randomUUID();
         await Model.locations.create(newLocation);
         APIResponse(response, newLocation, "Location created", 201);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -63,6 +66,7 @@ export const deleteLocationById = async (request : Request, response : Response)
         await Model.locations.delete(new Types.ObjectId(id));
         APIResponse(response, null, "Location deleted", 204);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -74,6 +78,7 @@ export const updateLocation = async (request : Request, response :  Response) =>
         await Model.locations.update(new Types.ObjectId(id), location);
         APIResponse(response, location, "Location updated", 200);
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -94,6 +99,7 @@ export const getPhoto = async (request : Request, response : Response) => {
             APIResponse(response, null, "Location not found", 404);
         }
     } catch (error : unknown) {
+        console.error(error);
         APIResponse(response, error, "error", 500);
     }
 }
