@@ -7,7 +7,6 @@ import { Request, Response} from 'express';
 import { Types } from "mongoose";
 
 
-const __dirname = path.dirname(__filename)
 
 const uploadDir = path.join(__dirname, '../uploads');
 
