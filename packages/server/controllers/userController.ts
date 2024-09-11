@@ -1,20 +1,23 @@
-import Model from "../models/index.js";
-import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
+import Model from "../models/index.ts";
 
-export const getUsers = (request, response) => {
+import { Request, Response } from "express";
+import { Types } from "mongoose";
+import { APIResponse } from "../utils/response.ts";
+
+export const getUsers = async (response: Response) => {
     try {
-        const users = Model.users.get();
+        const users = await Model.users.get();
         APIResponse(response, users, "All users", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getUsersById = (request, response) => {
+export const getUsersById = async (request: Request, response: Response) => {
     try {
         const id = request.params.id;
-        const user = Model.users.where(id);
+        const user = await Model.users.where(new Types.ObjectId(id));
     
         if (user) 
             APIResponse(response, user, "User found", 200);
@@ -26,12 +29,12 @@ export const getUsersById = (request, response) => {
     }
 }
 
-export const createAUser = (request, response) => {
+export const createAUser = async (request: Request, response: Response) => {
     try {
         const newUser = request.body;
     
         newUser.id = crypto.randomUUID();
-        Model.users.create(newUser);
+        await Model.users.create(newUser);
     
         APIResponse(response, newUser, "User created", 201);
     } catch (error) {
@@ -39,11 +42,11 @@ export const createAUser = (request, response) => {
     }
 }
 
-export const deleteUserById = (request, response) => {
+export const deleteUserById = async (request: Request, response: Response) => {
     try {
         const id = request.params.id;
     
-        Model.users.delete(id);
+        await Model.users.delete(new Types.ObjectId(id));
     
         APIResponse(response, null, "User deleted", 204);
     } catch (error) {
@@ -51,12 +54,12 @@ export const deleteUserById = (request, response) => {
     }
 }
 
-export const updateUser = (request, response) => {
+export const updateUser = async (request: Request, response: Response) => {
     try {
         const id = request.params.id;
         const user = request.body;
     
-        Model.users.update(id, user);
+        await Model.users.update(new Types.ObjectId(id), user);
     
         APIResponse(response, user, "User updated", 200);
     } catch (error) {
