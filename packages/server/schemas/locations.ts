@@ -1,0 +1,14 @@
+import mongoose, { Schema } from "mongoose";
+import { ILocation } from "../types/ILocation";
+
+const locationSchema: Schema = new Schema({
+    name: { type: String, required: true },
+    freeEntry: { type: Boolean, required: true },
+    price: { type: Number, required: true,},
+    type : { type: String, required: true},
+    photoName: { type: String, required: true},
+    photoType: { type: String, required: true},
+    countryId: { type: Schema.Types.ObjectId, ref: 'Country', required: true },
+});
+
+export default mongoose.model<ILocation>('Location', locationSchema);
