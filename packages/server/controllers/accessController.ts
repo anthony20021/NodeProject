@@ -1,21 +1,20 @@
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
 import Model from "../models/index.js";
-import { Types } from "mongoose";
 
-export const getAllAccesses = (request, response) => {
+export const getAllAccesses = async (request, response) => {
     try {
-        const access = Model.access.get();
+        const access = await Model.access.get();
         APIResponse(response, access, "All access", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getAccessById = (request, response) => {
+export const getAccessById = async (request, response) => {
     try {
-        const id : Types.ObjectId = request.params.id;
-        const access = Model.access.where(id);
+        const id = request.params.id;
+        const access = await Model.access.where(id);
         if(access){
             APIResponse(response, access, "Access", 200);
         }
@@ -27,43 +26,43 @@ export const getAccessById = (request, response) => {
     }
 }
 
-export const createAccess = (request, response) => {
+export const createAccess = async (request, response) => {
     try {
         const newAccess = request.body;
         newAccess.id = crypto.randomUUID();
-        Model.access.create(newAccess);
+        await Model.access.create(newAccess);
         APIResponse(response, newAccess, "Access created", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const deleteAccess = (request, response) => {
+export const deleteAccess = async (request, response) => {
     try {
         const id = request.params.id;
-        Model.access.delete(id);
+        await Model.access.delete(id);
         APIResponse(response, null, "Access deleted", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const updateAccess = (request, response) => {
+export const updateAccess = async (request, response) => {
     try {
         const id = request.params.id;
         const newAccess = request.body;
-        Model.access.update(id, newAccess);
+        await Model.access.update(id, newAccess);
         APIResponse(response, newAccess, "Access updated", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getAccessByLocationIdAndCountryId = (request, response) => {
+export const getAccessByLocationIdAndCountryId = async (request, response) => {
     try {
         const idLocation = request.params.idLocation;
         const idCountry = request.params.idCountry;
-        const access = Model.access.whereCountryLocation(idLocation, idCountry);
+        const access = await Model.access.whereCountryLocation(idLocation, idCountry);
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }
@@ -75,10 +74,10 @@ export const getAccessByLocationIdAndCountryId = (request, response) => {
     }
 }
 
-export const getAccessByLocationId = (request, response) => {
+export const getAccessByLocationId = async (request, response) => {
     try {
         const idLocation = request.params.id;
-        const access = Model.access.whereLocation(idLocation);
+        const access = await Model.access.whereLocation(idLocation);
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }
@@ -90,10 +89,10 @@ export const getAccessByLocationId = (request, response) => {
     }
 }
 
-export const getAccessByCountryId = (request, response) => {
+export const getAccessByCountryId = async (request, response) => {
     try {
         const idCountry = request.params.id;
-        const access = Model.access.whereCountry(idCountry);
+        const access = await Model.access.whereCountry(idCountry);
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }

@@ -1,8 +1,8 @@
-import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation, getPhoto } from "./locationController.js";
-import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController.js";
-import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController.js";
-import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController.js";
-import { uploadPhoto } from "./photoController.js";
+import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation, getPhoto } from "./locationController.ts";
+import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController.ts";
+import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController.ts";
+import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController.ts";
+import { uploadPhoto } from "./photoController.ts";
 
 export default {
     "locations" : {

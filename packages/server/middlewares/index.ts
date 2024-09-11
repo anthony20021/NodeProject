@@ -1,6 +1,6 @@
-import { loggerMiddleware } from "./loggerMiddleware.js";
-import { errorModule } from "./errorMiddleware.js";
-import { upload, updateLocationWithPhotoInfo } from "./photoMiddleware.js";
+import { loggerMiddleware } from "./loggerMiddleware.ts";
+import { errorModule } from "./errorMiddleware.ts";
+import { upload, updateLocationWithPhotoInfo } from "./photoMiddleware.ts";
 import { 
     validationLocationMiddleware, 
     validationUserMiddleware, 
