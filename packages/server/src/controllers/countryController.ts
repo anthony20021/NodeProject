@@ -31,7 +31,6 @@ export const getCountryById = async (request : Request, response : Response) => 
 export const createCountry = async (request : Request, response : Response) => {
     try {
         const newCountry = request.body;
-        newCountry.id = crypto.randomUUID();
         await Model.country.create(newCountry);
         APIResponse(response, newCountry, "country created", 200);
     } catch (error : unknown) {

@@ -31,7 +31,6 @@ export const getAccessById = async (request : Request, response : Response) => {
 export const createAccess = async (request : Request, response: Response) => {
     try {
         const newAccess = request.body;
-        newAccess.id = crypto.randomUUID();
         await Model.access.create(newAccess);
         APIResponse(response, newAccess, "Access created", 200);
     } catch (error : unknown) {
