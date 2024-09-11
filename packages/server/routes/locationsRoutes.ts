@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import Middlewares from '../middlewares/index.js';
 import Controllers from "../controllers/index.js";
 

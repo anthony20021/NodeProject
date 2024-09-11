@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import Controllers from "../controllers/index.js";
-import Middlewares from '../middlewares/index.js';
+
+import Controllers from "../controllers/index.ts";
+import Middlewares from '../middlewares/index.ts';
 
 const router = Router();
 

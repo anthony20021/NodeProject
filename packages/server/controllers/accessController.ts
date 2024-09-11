@@ -1,6 +1,6 @@
-import { APIResponse } from "../utils/response.js";
+import { APIResponse } from "../utils/response.ts";
 import crypto from "crypto";
-import Model from "../models/index.js";
+import Model from "../models/index.ts";
 import { Request, Response} from 'express';
 import { Types } from "mongoose";
 
