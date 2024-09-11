@@ -5,8 +5,8 @@ import { ILocation } from "../types/ILocation";
 export const getAllLocations = async () => {
     try {
         return await locations.find().exec();
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -14,8 +14,8 @@ export const getAllLocations = async () => {
 export const findLocationById = async (id : Types.ObjectId) => {
     try {
         return await locations.findById(id).exec();
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -23,8 +23,8 @@ export const findLocationByCountryId = async (id : Types.ObjectId) => {
     try {
         const location = await locations.find({ countryId: id }).exec();
         return location;
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -32,26 +32,26 @@ export const findLocationByCountryId = async (id : Types.ObjectId) => {
 export const createLocation = async (location : ILocation) => {
     try {
         return await locations.create(location);
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
 
-export const deleteLocation = (id) => {
+export const deleteLocation = (id : Types.ObjectId) => {
     try {
         return locations.deleteOne({ _id: id });
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
 
-export const updateLocation = (id, location) => {
+export const updateLocation = (id : Types.ObjectId, location : ILocation) => {
     try {
         return locations.findByIdAndUpdate(id, location, { new: true }).exec();;
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };

@@ -1,12 +1,12 @@
-import { loggerMiddleware } from "./loggerMiddleware.ts";
-import { errorModule } from "./errorMiddleware.ts";
-import { upload, updateLocationWithPhotoInfo } from "./photoMiddleware.ts";
+import { loggerMiddleware } from "./loggerMiddleware";
+import { errorModule } from "./errorMiddleware";
+import { upload, updateLocationWithPhotoInfo } from "./photoMiddleware";
 import { 
     validationLocationMiddleware, 
     validationUserMiddleware, 
     validationAccessMiddleware, 
     validationCountriesMiddleware,
-  } from "./controlMiddleware.ts";
+  } from "./controlMiddleware";
 
 export default {
     "error" : errorModule,

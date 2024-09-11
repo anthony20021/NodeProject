@@ -1,7 +1,8 @@
 import path from 'path';
 import multer from 'multer';
-import Models from '../models/index.ts';
+import Models from '../models/index';
 import { Request, Response, NextFunction } from 'express';
+import { Types } from 'mongoose';
 
 const generateRandomFileName = () => {
     const randomString : string = Math.random().toString(36).substring(2, 15);
@@ -10,10 +11,10 @@ const generateRandomFileName = () => {
 };
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: (req : Request, file, cb) => {
         cb(null, 'uploads/');
     },
-    filename: (req, file, cb) => {
+    filename: (req : Request, file, cb) => {
         const randomFileName : string = generateRandomFileName();
         const extension : string = path.extname(file.originalname);
         cb(null, randomFileName + extension);
@@ -23,7 +24,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
     limits: { fileSize: 1024 * 1024 * 15 }, // Limite de 15 Mo
-    fileFilter: (req, file, cb) => {
+    fileFilter: (req : Request, file, cb) => {
         const fileTypes : RegExp = /jpeg|jpg|png/;
         const extname : boolean = fileTypes.test(path.extname(file.originalname).toLowerCase());
         const mimetype : boolean = fileTypes.test(file.mimetype);
@@ -36,13 +37,13 @@ const upload = multer({
     }
 });
 
-export const updateLocationWithPhotoInfo = async (req : any, res : Response, next : NextFunction) => {
+export const updateLocationWithPhotoInfo = async (req : Request, res : Response, next : NextFunction) => {
     try {
         if (!req.file) {
             return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        const locationId = req.params.id;
+        const locationId = new Types.ObjectId(req.params.id);
 
         const locationToUpdate : any = Models.locations.where(locationId);
         if (!locationToUpdate) {
@@ -56,7 +57,7 @@ export const updateLocationWithPhotoInfo = async (req : any, res : Response, nex
 
         next();
 
-    } catch (err) {
+    } catch (err : any) {
         res.status(500).json({ error: err.message });
     }
 };
