@@ -61,7 +61,7 @@ const HomePage = () => {
         setSelectedLocation(selectedLocationId);
 
         //Le pays de destination se sémectionne automatiquement quand on choisi une location.
-        const selectedLoc = locations.find(location => location.id.toString() === selectedLocationId);
+        const selectedLoc = locations.find(location => location._id.toString() === selectedLocationId);
         if (selectedLoc) {
             setSelectedCountry(selectedLoc.countryId.toString());
         }
@@ -122,7 +122,7 @@ const HomePage = () => {
                             label="Choisissez votre pays de départ"
                             id="departureCountrySelection"
                             options={departureCountries.map(country => ({
-                                value: country.id.toString(),
+                                value: country._id.toString(),
                                 label: country.name
                             }))}
                             onChange={handleDepartureCountryChange}
@@ -135,7 +135,7 @@ const HomePage = () => {
                             label="Choisissez votre pays de destination"
                             id="countrySelection"
                             options={countries.map(country => ({
-                                value: country.id.toString(),
+                                value: country._id.toString(),
                                 label: country.name
                             }))}
                             onChange={handleCountryChange}
@@ -145,7 +145,7 @@ const HomePage = () => {
                             label="Choisissez votre visite"
                             id="locationSelection"
                             options={filteredLocations.map(location => ({
-                                value: location.id.toString(),
+                                value: location._id.toString(),
                                 label: location.name
                             }))}
                             onChange={handleLocationChange}

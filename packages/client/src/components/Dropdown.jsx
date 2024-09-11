@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/Dropdown.css';
 
-const Dropdown = ({ label, options, onChange, value, id }) => {
+const Dropdown = ({ label, options, onChange, value, _id }) => {
   return (
     <div className="dropdown-container">
-      <label htmlFor={id} className="dropdown-label">
+      <label htmlFor={_id} className="dropdown-label">
         {label}
       </label>
       <select
-        id={id}
+        id={_id}
         className="dropdown"
         onChange={onChange}
         value={value}
