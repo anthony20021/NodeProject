@@ -1,4 +1,4 @@
-import Middlewares from "../middlewares/index.ts";
+import Middlewares from "../middlewares/index";
 
 import { Request, Response } from "express";
 
@@ -8,7 +8,7 @@ export const uploadPhoto = async (req: Request, res: Response) => {
             res.status(200).json({ message: 'Location updated with photo information' });
         });
 
-    } catch (err) {
+    } catch (err : any) {
         res.status(500).json({ error: err.message });
     }
 };

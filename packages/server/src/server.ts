@@ -1,6 +1,6 @@
 import express from "express";
-import Middlewares from "./middlewares/index.js";
-import routes from "./routes/index.js";
+import Middlewares from "./middlewares";
+import routes from "./routes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./config/database";

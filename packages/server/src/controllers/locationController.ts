@@ -1,13 +1,11 @@
-import Model from "../models/index.ts";
-import { APIResponse } from "../utils/response.ts";
+import Model from "../models/index";
+import { APIResponse } from "../utils/response";
 import crypto from 'crypto';
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import { Request, Response} from 'express';
 import { Types } from "mongoose";
 
-const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename)
 
@@ -17,7 +15,7 @@ export const getLocationsAll = async (request : Request, response : Response) =>
     try {
         const locations = await Model.locations.get();
         APIResponse(response, locations, "All locations", 200);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -30,7 +28,7 @@ export const getLocationById = async (request : Request, response : Response) =>
             APIResponse(response, location, "Location found", 200);
         else
             APIResponse(response, null, "Location not found", 404);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -44,7 +42,7 @@ export const findLocationByCountry = async (request : Request, response : Respon
         
         else
             APIResponse(response, [], "No locations found for the given country ID", 404);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -55,7 +53,7 @@ export const createALocation = async (request : Request, response : Response) =>
         newLocation.id = crypto.randomUUID();
         await Model.locations.create(newLocation);
         APIResponse(response, newLocation, "Location created", 201);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -63,9 +61,9 @@ export const createALocation = async (request : Request, response : Response) =>
 export const deleteLocationById = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
-        await Model.locations.delete(id);
+        await Model.locations.delete(new Types.ObjectId(id));
         APIResponse(response, null, "Location deleted", 204);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -74,9 +72,9 @@ export const updateLocation = async (request : Request, response :  Response) =>
     try {
         const id = request.params.id;
         const location = request.body;
-        await Model.locations.update(id, location);
+        await Model.locations.update(new Types.ObjectId(id), location);
         APIResponse(response, location, "Location updated", 200);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -96,7 +94,7 @@ export const getPhoto = async (request : Request, response : Response) => {
         else{
             APIResponse(response, null, "Location not found", 404);
         }
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }

@@ -1,15 +1,15 @@
 import crypto from 'crypto';
-import Model from "../models/index.ts";
+import Model from "../models/index";
 
 import { Request, Response } from "express";
 import { Types } from "mongoose";
-import { APIResponse } from "../utils/response.ts";
+import { APIResponse } from "../utils/response";
 
 export const getUsers = async (response: Response) => {
     try {
         const users = await Model.users.get();
         APIResponse(response, users, "All users", 200);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -24,7 +24,7 @@ export const getUsersById = async (request: Request, response: Response) => {
     
         else
             APIResponse(response, null, "User not found", 404);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -37,7 +37,7 @@ export const createAUser = async (request: Request, response: Response) => {
         await Model.users.create(newUser);
     
         APIResponse(response, newUser, "User created", 201);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -49,7 +49,7 @@ export const deleteUserById = async (request: Request, response: Response) => {
         await Model.users.delete(new Types.ObjectId(id));
     
         APIResponse(response, null, "User deleted", 204);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }
@@ -62,7 +62,7 @@ export const updateUser = async (request: Request, response: Response) => {
         await Model.users.update(new Types.ObjectId(id), user);
     
         APIResponse(response, user, "User updated", 200);
-    } catch (error) {
+    } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
     }
 }

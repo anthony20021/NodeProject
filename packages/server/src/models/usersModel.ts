@@ -7,8 +7,8 @@ import { IUser } from "../types/IUser";
 export const getAllUsers = async (): Promise<IUser[]> => {
     try {
         return User.find().select("name firstName email").exec();
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -22,8 +22,8 @@ export const findUserById = async (id: Types.ObjectId): Promise<{ user: IUser } 
             return null;
         return {user: user.toObject()};
 
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -32,8 +32,8 @@ export const findUserById = async (id: Types.ObjectId): Promise<{ user: IUser } 
 export const createUser = (user: Partial<IUser>) => {
     try {
         return User.create(user);
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -42,8 +42,8 @@ export const createUser = (user: Partial<IUser>) => {
 export const deleteUser = (id: Types.ObjectId): Promise<{ deletedCount: number }> => {
     try {
         return User.deleteOne({_id: id});
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
@@ -52,8 +52,8 @@ export const deleteUser = (id: Types.ObjectId): Promise<{ deletedCount: number }
 export const updateUser = async (id: Types.ObjectId, userData: Partial<IUser>) => {
     try {
         return User.findByIdAndUpdate(id, userData, { new: true }).exec();
-    } catch (error) {
-        console.error(error.message);
+    } catch (error : any) {
+        console.error(error);
         return error.message;
     }
 };
