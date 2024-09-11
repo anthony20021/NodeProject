@@ -1,6 +1,6 @@
-import { APIResponse } from "../utils/response.js";
+import { APIResponse } from "../utils/response.ts";
 import crypto from "crypto";
-import Model from "../models/index.js";
+import Model from "../models/index.ts";
 
 export const getAllAccesses = async (request, response) => {
     try {

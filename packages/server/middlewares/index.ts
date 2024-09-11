@@ -6,7 +6,7 @@ import {
     validationUserMiddleware, 
     validationAccessMiddleware, 
     validationCountriesMiddleware,
-  } from "./controlMiddleware.js";
+  } from "./controlMiddleware.ts";
 
 export default {
     "error" : errorModule,
