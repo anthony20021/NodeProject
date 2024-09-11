@@ -1,9 +1,7 @@
 import { Document, Types } from "mongoose";
-import { ICountry } from "./ILocation";
 
-export interface ICountry extends Document {
-    id: Types.ObjectId;
-    countryId: ICountry["id"];
+export interface ILocation extends Document {
+    countryId: Types.ObjectId;
     name: string;
     freeEntry: boolean;
     price: number;
