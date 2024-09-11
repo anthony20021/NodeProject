@@ -1,12 +1,8 @@
 import { APIResponse } from "../utils/response.ts";
 import crypto from "crypto";
-<<<<<<< HEAD
-import Model from "../models/index.js";
 import { Request, Response} from 'express';
 import { Types } from "mongoose";
-=======
 import Model from "../models/index.ts";
->>>>>>> 5aa9b3c245f82ab79f38ff89c8f7938dfd6962b1
 
 export const getAllAccesses = async (request : Request, response : Response) => {
     try {
