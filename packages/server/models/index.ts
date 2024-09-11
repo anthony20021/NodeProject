@@ -1,7 +1,7 @@
-import { findAllCountry, findCountryById, createCountry, deleteCountry, updateCountry } from "./countryModel.js";
-import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocation } from "./locationsModel.js";
-import { getAllAccesses, findAccessById, findAccessesByCountryId, findAccessesByLocationId, findAccessesByLocationAndCountryId, deleteAccess, updateAccess, createAccess } from "./accessModel.js";
-import { getAllUsers, findUserById, createUser, deleteUser, updateUser } from "./usersModel.js";
+import { findAllCountry, findCountryById, createCountry, deleteCountry, updateCountry } from "./countryModel.ts";
+import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocation } from "./locationsModel.ts";
+import { getAllAccesses, findAccessById, findAccessesByCountryId, findAccessesByLocationId, findAccessesByLocationAndCountryId, deleteAccess, updateAccess, createAccess } from "./accessModel.ts";
+import { getAllUsers, findUserById, createUser, deleteUser, updateUser } from "./usersModel.ts";
 
 export default {
     "country" : {

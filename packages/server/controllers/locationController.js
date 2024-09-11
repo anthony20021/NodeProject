@@ -1,5 +1,5 @@
 import Model from "../models/index.js";
-import Middlewares from "../middlewares/index.js";
+import Middlewares from "../middlewares/index.ts";
 import { APIResponse } from "../utils/response.js";
 import crypto from 'crypto';
 import fs from "fs";
