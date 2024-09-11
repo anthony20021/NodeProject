@@ -1,10 +1,11 @@
-import Model from "../models/index.js";
-import Middlewares from "../middlewares/index.ts";
-import { APIResponse } from "../utils/response.js";
+import Model from "../models/index.ts";
+import { APIResponse } from "../utils/response.ts";
 import crypto from 'crypto';
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { Request, Response} from 'express';
+import { Types } from "mongoose";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -12,7 +13,7 @@ const __dirname = path.dirname(__filename)
 
 const uploadDir = path.join(__dirname, '../uploads');
 
-export const getLocationsAll = async (request, response) => {
+export const getLocationsAll = async (request : Request, response : Response) => {
     try {
         const locations = await Model.locations.get();
         APIResponse(response, locations, "All locations", 200);
@@ -21,10 +22,10 @@ export const getLocationsAll = async (request, response) => {
     }
 }
 
-export const getLocationById = async (request, response) => {
+export const getLocationById = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
-        const location = await Model.locations.where(id);
+        const location = await Model.locations.where(new Types.ObjectId(id));
         if (location) 
             APIResponse(response, location, "Location found", 200);
         else
@@ -34,10 +35,10 @@ export const getLocationById = async (request, response) => {
     }
 }
 
-export const findLocationByCountry = async (request, response) => {
+export const findLocationByCountry = async (request : Request, response : Response) => {
     try {
         const countryId = request.params.countryId;
-        const locations = await Model.locations.fromWhere(countryId);
+        const locations = await Model.locations.fromWhere(new Types.ObjectId(countryId));
         if (locations && locations.length > 0)
             APIResponse(response, locations, "Locations found for the given country ID", 200);
         
@@ -48,7 +49,7 @@ export const findLocationByCountry = async (request, response) => {
     }
 }
 
-export const createALocation = async (request, response) => {
+export const createALocation = async (request : Request, response : Response) => {
     try {
         const newLocation = request.body;
         newLocation.id = crypto.randomUUID();
@@ -59,7 +60,7 @@ export const createALocation = async (request, response) => {
     }
 }
 
-export const deleteLocationById = async (request, response) => {
+export const deleteLocationById = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
         await Model.locations.delete(id);
@@ -69,7 +70,7 @@ export const deleteLocationById = async (request, response) => {
     }
 }
 
-export const updateLocation = async (request, response) => {
+export const updateLocation = async (request : Request, response :  Response) => {
     try {
         const id = request.params.id;
         const location = request.body;
@@ -80,10 +81,10 @@ export const updateLocation = async (request, response) => {
     }
 }
 
-export const getPhoto = async (request, response) => {
+export const getPhoto = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
-        const location = await Model.locations.where(id);
+        const location = await Model.locations.where(new Types.ObjectId(id));
         
         if (location) {
             const photoName = location.photoName;

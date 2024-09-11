@@ -1,10 +1,11 @@
 import path from 'path';
 import multer from 'multer';
 import Models from '../models/index.js';
+import { Request, Response, NextFunction } from 'express';
 
 const generateRandomFileName = () => {
     const randomString : string = Math.random().toString(36).substring(2, 15);
-    const timestamp : Date = Date.now();
+    const timestamp : Date = new Date();
     return `${timestamp}-${randomString}`;
 };
 
@@ -24,8 +25,8 @@ const upload = multer({
     limits: { fileSize: 1024 * 1024 * 15 }, // Limite de 15 Mo
     fileFilter: (req, file, cb) => {
         const fileTypes : RegExp = /jpeg|jpg|png/;
-        const extname : string = fileTypes.test(path.extname(file.originalname).toLowerCase());
-        const mimetype : string = fileTypes.test(file.mimetype);
+        const extname : boolean = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype : boolean = fileTypes.test(file.mimetype);
 
         if (mimetype != null && extname != null) {
             return cb(null, true);
@@ -35,13 +36,13 @@ const upload = multer({
     }
 });
 
-export const updateLocationWithPhotoInfo = async (req : any, res : any, next : any) => {
+export const updateLocationWithPhotoInfo = async (req : any, res : Response, next : NextFunction) => {
     try {
         if (!req.file) {
             return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        const locationId : number = parseInt(req.params.id);
+        const locationId = req.params.id;
 
         const locationToUpdate : any = Models.locations.where(locationId);
         if (!locationToUpdate) {

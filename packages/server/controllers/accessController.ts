@@ -1,8 +1,10 @@
 import { APIResponse } from "../utils/response.js";
 import crypto from "crypto";
 import Model from "../models/index.js";
+import { Request, Response} from 'express';
+import { Types } from "mongoose";
 
-export const getAllAccesses = async (request, response) => {
+export const getAllAccesses = async (request : Request, response : Response) => {
     try {
         const access = await Model.access.get();
         APIResponse(response, access, "All access", 200);
@@ -11,10 +13,10 @@ export const getAllAccesses = async (request, response) => {
     }
 }
 
-export const getAccessById = async (request, response) => {
+export const getAccessById = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
-        const access = await Model.access.where(id);
+        const access = await Model.access.where(new Types.ObjectId(id));
         if(access){
             APIResponse(response, access, "Access", 200);
         }
@@ -26,7 +28,7 @@ export const getAccessById = async (request, response) => {
     }
 }
 
-export const createAccess = async (request, response) => {
+export const createAccess = async (request : Request, response: Response) => {
     try {
         const newAccess = request.body;
         newAccess.id = crypto.randomUUID();
@@ -37,32 +39,32 @@ export const createAccess = async (request, response) => {
     }
 }
 
-export const deleteAccess = async (request, response) => {
+export const deleteAccess = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
-        await Model.access.delete(id);
+        await Model.access.delete(new Types.ObjectId(id));
         APIResponse(response, null, "Access deleted", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const updateAccess = async (request, response) => {
+export const updateAccess = async (request : Request, response : Response) => {
     try {
         const id = request.params.id;
         const newAccess = request.body;
-        await Model.access.update(id, newAccess);
+        await Model.access.update(new Types.ObjectId(id), newAccess);
         APIResponse(response, newAccess, "Access updated", 200);
     } catch (error) {
         APIResponse(response, error, "error", 500);
     }
 }
 
-export const getAccessByLocationIdAndCountryId = async (request, response) => {
+export const getAccessByLocationIdAndCountryId = async (request : Request, response : Response) => {
     try {
         const idLocation = request.params.idLocation;
         const idCountry = request.params.idCountry;
-        const access = await Model.access.whereCountryLocation(idLocation, idCountry);
+        const access = await Model.access.whereCountryLocation(new Types.ObjectId(idLocation), new Types.ObjectId(idCountry));
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }
@@ -74,10 +76,10 @@ export const getAccessByLocationIdAndCountryId = async (request, response) => {
     }
 }
 
-export const getAccessByLocationId = async (request, response) => {
+export const getAccessByLocationId = async (request : Request, response :  Response) => {
     try {
         const idLocation = request.params.id;
-        const access = await Model.access.whereLocation(idLocation);
+        const access = await Model.access.whereLocation(new Types.ObjectId(idLocation));
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }
@@ -89,10 +91,10 @@ export const getAccessByLocationId = async (request, response) => {
     }
 }
 
-export const getAccessByCountryId = async (request, response) => {
+export const getAccessByCountryId = async (request : Request, response : Response) => {
     try {
         const idCountry = request.params.id;
-        const access = await Model.access.whereCountry(idCountry);
+        const access = await Model.access.whereCountry(new Types.ObjectId(idCountry));
         if(access.length > 0) {
             APIResponse(response, access, "Access found", 200);
         }
