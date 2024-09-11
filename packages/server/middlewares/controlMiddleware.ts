@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 export const validationLocationMiddleware = (req : Request, res : Response, next : NextFunction) => {
     const { countryId, name, freeEntry, price, type } = req.body;
