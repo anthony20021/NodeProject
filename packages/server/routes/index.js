@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import countryRoutes from "./countryRoutes.js";
-import locationsRoutes from "./locationsRoutes.js";
-import usersRoutes from "./usersRoutes.js";
-import accessesRoutes from "./accessRoutes.js";
-import photoRoutes from "./photoRoutes.js";
+import countryRoutes from "./countryRoutes.ts";
+import locationsRoutes from "./locationsRoutes.ts";
+import usersRoutes from "./usersRoutes.ts";
+import accessesRoutes from "./accessRoutes.ts";
+import photoRoutes from "./photoRoutes.ts";
 
 const router = Router();
 

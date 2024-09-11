@@ -58,6 +58,7 @@ export const updateUser = async (id: Types.ObjectId, userData: Partial<IUser>) =
     }
 };
 
+//CRUD to get a user by it's credentials
 export const findByCredentials = async (email: string): Promise<any> => {
     try {
         return User.findOne({ email }).select("password").exec();
