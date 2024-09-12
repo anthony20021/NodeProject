@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken";
 import middlewares from "../middlewares";
 import { Request, Response } from "express";
 import { Types } from "mongoose";
-import { APIResponse, hashPassword, verifyPassword } from "../utils/response";
+import { APIResponse } from "../utils/response";
+import { hashPassword, verifyPassword } from "../utils/pass";
 import { env } from "../config/env";
 
 const { JWT_SECRET, NODE_ENV } = env;
@@ -52,6 +53,38 @@ export const createAUser = async (request: Request, response: Response) => {
     }
     catch (error : unknown) {
         APIResponse(response, error, "error", 400);
+    }
+}
+
+export const login = async (req : Request, res : Response) => {
+    try {
+        const { email, password } = req.body;
+        const user = await Model.users.find( email );
+        if(!user){
+            return APIResponse(res, null, "Email or password incorrect", 401);
+        }
+        if(await verifyPassword(password, user.password) === false){
+            return APIResponse(res, null, "Email or password incorrect", 401);
+        }
+
+        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+        res.cookie("token", token, { 
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: NODE_ENV === "production",
+         });
+        return APIResponse(res, user, "Logged in", 200);
+    } catch (error) {
+        return APIResponse(res, error, "error", 500);
+    }
+}
+
+export const logout = async (req : Request, res : Response) => {
+    try {
+        res.clearCookie("token");
+        return APIResponse(res, null, "Logged out", 200);
+    } catch (error) {
+        return APIResponse(res, error, "error", 500);
     }
 }
 
