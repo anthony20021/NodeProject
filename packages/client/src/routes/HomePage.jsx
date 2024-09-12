@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/HomePage.css';
 import Button from '../components/Button';
@@ -104,6 +105,23 @@ const HomePage = () => {
         }
     };
 
+    const navigate = useNavigate();
+    const handleDeconnection = async () => {
+        try{
+            const response = await axios.post("http://localhost:3000/users/logout", {
+                withCredentials: true
+            });
+
+            if(response.status === 200) {
+                console.log("Déconnexion réussie", response.data);
+                navigate("/");
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     //On affiche nos composants, l'user peut faire ses sélections, valider puis on lui affiche les informations retournées.
     return (
         <>
@@ -113,6 +131,13 @@ const HomePage = () => {
                     <h1 className="home-title">
                         Quelle sera votre prochaine destination ?
                     </h1>
+
+                    <div className="logout-bouton-container">
+                        <Button
+                            label="Se déconnecter"
+                            onClick={handleDeconnection}
+                        />
+                    </div>
                 </header>
 
                 <section className="home-section-container">
