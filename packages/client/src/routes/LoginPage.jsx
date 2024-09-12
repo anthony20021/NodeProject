@@ -27,14 +27,18 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/user/login", {
+            const response = await axios.post("http://localhost:3000/users/login", {
                 email: email,
                 password: password
             },
             {
                 withCredentials: true
             });
-            console.log("Connexion réussie", response.data);
+
+            if(response.status === 200) {
+                console.log("Connexion réussie", response.data);
+                navigate("/home");
+            }
 
         } catch (error) {
             if (error) {
@@ -64,7 +68,7 @@ const LoginPage = () => {
             }
 
             else{
-                const response = await axios.post("/user/register", {
+                const response = await axios.post("http://localhost:3000/users/register", {
                     name: lastName,
                     firstname: firstName,
                     email: email,
@@ -188,7 +192,6 @@ const LoginPage = () => {
                                 <Button
                                     label="Se connecter"
                                     type="submit"
-                                    onClick={() => navigate("/home")}
                                 />
                             </div>
                         </form>
