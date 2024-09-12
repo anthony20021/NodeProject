@@ -37,3 +37,9 @@ body {
     justify-content: space-around;
     gap: 50px;
 }
+
+.logout-bouton-container {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
