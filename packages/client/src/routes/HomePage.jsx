@@ -16,17 +16,22 @@ const HomePage = () => {
     const [selectedCountry, setSelectedCountry] = useState("");
     const [selectedLocation, setSelectedLocation] = useState("");
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
+    const [login, setLogin] = useState(null);
 
     //Chargement initial des données
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const login = await axios.post("http://localhost:3000/users/verifyLogin", {withCredentials: true});
+                
                 //On fait appel à l'API pour récupérer les data de nos json country, locatios et accesses
                 const countriesResponse = await axios.get("http://localhost:3000/country");
                 const locationsResponse = await axios.get('http://localhost:3000/locations');
                 const transportTypesResponse = await axios.get('http://localhost:3000/accesses');
 
                 //On met à jour les useEffect avec les data récupérées
+                setLogin(login.data.data);
                 setCountries(countriesResponse.data.data);
                 setDepartureCountries(countriesResponse.data.data);
                 setLocations(locationsResponse.data.data);
@@ -105,7 +110,6 @@ const HomePage = () => {
         }
     };
 
-    const navigate = useNavigate();
     const handleDeconnection = async () => {
         try{
             const response = await axios.post("http://localhost:3000/users/logout", {
