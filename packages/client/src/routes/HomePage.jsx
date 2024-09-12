@@ -23,7 +23,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const login = await axios.post("http://localhost:3000/users/verifyLogin", {withCredentials: true});
+                const login = await axios.post("http://localhost:3000/users/verifyLogin",{}, {withCredentials: true});
                 
                 //On fait appel à l'API pour récupérer les data de nos json country, locatios et accesses
                 const countriesResponse = await axios.get("http://localhost:3000/country");
@@ -112,7 +112,7 @@ const HomePage = () => {
 
     const handleDeconnection = async () => {
         try{
-            const response = await axios.post("http://localhost:3000/users/logout", {
+            const response = await axios.post("http://localhost:3000/users/logout", {}, {
                 withCredentials: true
             });
 
@@ -127,75 +127,84 @@ const HomePage = () => {
     }
 
     //On affiche nos composants, l'user peut faire ses sélections, valider puis on lui affiche les informations retournées.
-    return (
-        <>
-            <main className="home-main-container">
+    if(login){
+        return (
+            <>
+                <main className="home-main-container">
+    
+                    <header>
+                        <h1 className="home-title">
+                            Quelle sera votre prochaine destination ?
+                        </h1>
+    
+                        <div className="logout-bouton-container">
+                            <Button
+                                className="button-default logout-button"
+                                label="Se déconnecter"
+                                onClick={handleDeconnection}
+                            />
+                        </div>
+                    </header>
+    
+                    <section className="home-section-container">
+    
+                        <div className="home-departure-dropdown-container">
+                            <Dropdown
+                                label="Choisissez votre pays de départ"
+                                id="departureCountrySelection"
+                                options={departureCountries.map(country => ({
+                                    value: country._id.toString(),
+                                    label: country.name
+                                }))}
+                                onChange={handleDepartureCountryChange}
+                                value={selectedDepartureCountry}
+                            />
+                        </div>
+    
+                        <div className="home-dropdown-container">
+                            <Dropdown
+                                label="Choisissez votre pays de destination"
+                                id="countrySelection"
+                                options={countries.map(country => ({
+                                    value: country._id.toString(),
+                                    label: country.name
+                                }))}
+                                onChange={handleCountryChange}
+                                value={selectedCountry}
+                            />
+                            <Dropdown
+                                label="Choisissez votre visite"
+                                id="locationSelection"
+                                options={filteredLocations.map(location => ({
+                                    value: location._id.toString(),
+                                    label: location.name
+                                }))}
+                                onChange={handleLocationChange}
+                                value={selectedLocation}
+                            />
+                        </div>
+    
+                        <div className="home-bouton-container">
+                            <Button
+                                label="Valider"
+                                onClick={handleButtonClick}
+                            />
+                        </div>
+    
+                        <div>
+                            {message && <div className="message">{message}</div>}
+                        </div>
+                    </section>
+                </main>
+            </>
+        )
+    }
 
-                <header>
-                    <h1 className="home-title">
-                        Quelle sera votre prochaine destination ?
-                    </h1>
-
-                    <div className="logout-bouton-container">
-                        <Button
-                            label="Se déconnecter"
-                            onClick={handleDeconnection}
-                        />
-                    </div>
-                </header>
-
-                <section className="home-section-container">
-
-                    <div className="home-departure-dropdown-container">
-                        <Dropdown
-                            label="Choisissez votre pays de départ"
-                            id="departureCountrySelection"
-                            options={departureCountries.map(country => ({
-                                value: country._id.toString(),
-                                label: country.name
-                            }))}
-                            onChange={handleDepartureCountryChange}
-                            value={selectedDepartureCountry}
-                        />
-                    </div>
-
-                    <div className="home-dropdown-container">
-                        <Dropdown
-                            label="Choisissez votre pays de destination"
-                            id="countrySelection"
-                            options={countries.map(country => ({
-                                value: country._id.toString(),
-                                label: country.name
-                            }))}
-                            onChange={handleCountryChange}
-                            value={selectedCountry}
-                        />
-                        <Dropdown
-                            label="Choisissez votre visite"
-                            id="locationSelection"
-                            options={filteredLocations.map(location => ({
-                                value: location._id.toString(),
-                                label: location.name
-                            }))}
-                            onChange={handleLocationChange}
-                            value={selectedLocation}
-                        />
-                    </div>
-
-                    <div className="home-bouton-container">
-                        <Button
-                            label="Valider"
-                            onClick={handleButtonClick}
-                        />
-                    </div>
-
-                    <div>
-                        {message && <div className="message">{message}</div>}
-                    </div>
-                </section>
-            </main>
-        </>
-    )
+    else{
+        return(
+            <h1 className="home-title">Vous n'êtes pas connecté !</h1>
+        )
+    }
 };
 
 export default HomePage;
