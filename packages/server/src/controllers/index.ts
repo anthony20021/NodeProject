@@ -1,5 +1,5 @@
 import { getLocationsAll, getLocationById, findLocationByCountry, createALocation, deleteLocationById, updateLocation, getPhoto } from "./locationController";
-import { getUsers, getUsersById, createAUser, deleteUserById, updateUser } from "./userController";
+import { getUsers, getUsersById, createAUser, deleteUserById, updateUser, login, logout } from "./userController";
 import { getAllCountries, getCountryById, createCountry, deleteCountry, updateCountry } from "./countryController";
 import { getAllAccesses, getAccessById, createAccess, deleteAccess, updateAccess, getAccessByCountryId, getAccessByLocationId, getAccessByLocationIdAndCountryId } from "./accessController";
 import { uploadPhoto } from "./photoController";
@@ -21,6 +21,8 @@ export default {
         "create" : createAUser,
         "delete": deleteUserById,
         "update": updateUser,
+        "login" : login,
+        "logout" : logout,
     },
 
     "accesses" : {
