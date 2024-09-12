@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -15,20 +16,36 @@ const LoginPage = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value, type, checked, files } = e.target;
+        const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
-            [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
+            [name]: value
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //TODO
-        //ajouter la logique pour envoyer les données du formulaire
+        // TODO: ajouter la logique pour envoyer les données du formulaire
     };
 
     const { lastName, firstName, email, password, confirmPassword } = formData;
+
+    const [visibleSection, setVisibleSection] = useState('');
+
+    const handleSignupClick = () => {
+        setVisibleSection('signup');
+    };
+
+    const handleLoginClick = () => {
+        setVisibleSection('login');
+    };
+
+    const handleSignupValidation = (e) => {
+        e.preventDefault();
+        setVisibleSection('login');
+    };
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -39,103 +56,110 @@ const LoginPage = () => {
                     </h1>
                 </header>
 
-                <section className="login-section-container">
-                    <h2 className="form-title">S'inscrire / Se connecter</h2>
+                {/* Section visible au départ pour choisir entre Se connecter et S'inscrire. Cette section est masquée si une autre section est active */}
+                {visibleSection === '' && (
+                    <section className="login-section-container">
+                        <h2 className="form-title">S'inscrire / Se connecter</h2>
+                        <Button
+                            label="Se connecter"
+                            onClick={handleLoginClick}
+                        />
+                        <Button
+                            label="S'inscrire"
+                            onClick={handleSignupClick}
+                        />
+                    </section>
+                )}
 
-                    <Button
-                        label="Se connecter"
-                    />
-                    <Button
-                        label="S'inscrire"
-                    />
-                </section>
-
-                <section className="signup-form-container">
-                    <h2 className="form-title">S'inscrire</h2>
-
-                    <form onSubmit={handleSubmit} className="signup-form">
-                        <Input
-                            label="Nom"
-                            type="text"
-                            name="lastName"
-                            value={lastName}
-                            onChange={handleLastNameChange}
-                            placeholder="Entrez votre nom"
-                        />
-                        <Input
-                            label="Prénom"
-                            type="text"
-                            name="firstName"
-                            value={firstName}
-                            onChange={handleFirstNameChange}
-                            placeholder="Entrez votre prénom"
-                        />
-                        <Input
-                            label="E-mail"
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            placeholder="Entrez votre e-mail"
-                        />
-                        <Input
-                            label="Mot de passe"
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder="Entrez votre mot de passe"
-                        />
-                        <Input
-                            label="Confirmer le mot de passe"
-                            type="password"
-                            name="confirmPassword"
-                            value={confirmPassword}
-                            onChange={handleConfirmPasswordChange}
-                            placeholder="Entrez à nouveau votre mot de passe"
-                        />
-
-                        <div className="signup-validation-button">
-                            <Button
-                                label="S'inscrire"
-                                type="submit"
+                {/* Formulaire d'inscription, visible uniquement quand on clique sur "S'inscrire" */}
+                {visibleSection === 'signup' && (
+                    <section className="signup-form-container">
+                        <h2 className="form-title">S'inscrire</h2>
+                        <form onSubmit={handleSignupValidation} className="signup-form">
+                            <Input
+                                label="Nom"
+                                type="text"
+                                name="lastName"
+                                value={lastName}
+                                onChange={handleChange}
+                                placeholder="Entrez votre nom"
                             />
-                        </div>
-                    </form>
-                </section>
-
-                <section className="login-form-container">
-                    <h2 className="form-title">Se connecter</h2>
-
-                    <form className="login-form">
-                        <Input
-                            label="E-mail"
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            placeholder="Entrez votre e-mail"
-                        />
-                        <Input
-                            label="Mot de passe"
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder="Entrez votre mot de passe"
-                        />
-
-                        <div className="login-validation-button">
-                            <Button
-                                label="Se connecter"
-                                type="submit"
+                            <Input
+                                label="Prénom"
+                                type="text"
+                                name="firstName"
+                                value={firstName}
+                                onChange={handleChange}
+                                placeholder="Entrez votre prénom"
                             />
-                        </div>
-                    </form>
-                </section>
+                            <Input
+                                label="E-mail"
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleChange}
+                                placeholder="Entrez votre e-mail"
+                            />
+                            <Input
+                                label="Mot de passe"
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={handleChange}
+                                placeholder="Entrez votre mot de passe"
+                            />
+                            <Input
+                                label="Confirmer le mot de passe"
+                                type="password"
+                                name="confirmPassword"
+                                value={confirmPassword}
+                                onChange={handleChange}
+                                placeholder="Entrez à nouveau votre mot de passe"
+                            />
+                            <div className="signup-validation-button">
+                                <Button
+                                    label="S'inscrire"
+                                    type="submit"
+                                />
+                            </div>
+                        </form>
+                    </section>
+                )}
+
+                {/* Formulaire de connexion, visible uniquement quand on clique sur "Se connecter" */}
+                {visibleSection === 'login' && (
+                    <section className="login-form-container">
+                        <h2 className="form-title">Se connecter</h2>
+                        <form className="login-form" onSubmit={handleSubmit}>
+                            <Input
+                                label="E-mail"
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleChange}
+                                placeholder="Entrez votre e-mail"
+                            />
+                            <Input
+                                label="Mot de passe"
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={handleChange}
+                                placeholder="Entrez votre mot de passe"
+                            />
+                            <div className="login-validation-button">
+                                <Button
+                                    label="Se connecter"
+                                    type="submit"
+                                    onClick={() => navigate("/home")}
+                                />
+                            </div>
+                        </form>
+                    </section>
+                )}
             </main>
         </>
-    )
+    );
 };
 
 export default LoginPage;
