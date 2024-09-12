@@ -10,5 +10,7 @@ router.get("/:id", Controllers.users.where);
 router.post("/", Middlewares.validationUser, Controllers.users.create);
 router.delete("/:id", Controllers.users.delete);
 router.put("/:id", Middlewares.validationUser, Controllers.users.update);
+router.post("/login", Controllers.users.login);
+router.post("/logout", Controllers.users.logout);
 
 export default router;
