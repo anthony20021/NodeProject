@@ -1,5 +1,6 @@
 import Model from "../models/index";
 import jwt from "jsonwebtoken";
+import middlewares from "../middlewares";
 import { Request, Response } from "express";
 import { Types } from "mongoose";
 import { APIResponse, hashPassword, verifyPassword } from "../utils/response";
@@ -31,15 +32,26 @@ export const getUsersById = async (request: Request, response: Response) => {
     }
 }
 
+//S'enregsitrer
 export const createAUser = async (request: Request, response: Response) => {
     try {
-        const newUser = request.body;
-    
-        await Model.users.create(newUser);
-    
-        APIResponse(response, newUser, "User created", 201);
-    } catch (error : unknown) {
-        APIResponse(response, error, "error", 500);
+        const { email, password, name, firstname } = request.body;
+        const emailExist = await Model.users.find( email );
+        if(emailExist != null){
+            return APIResponse(response, null, "Email already exist", 409);
+        }
+        const hashedPassword = await hashPassword(password);
+        if(hashedPassword === null){
+            throw new Error("Erreur lors du hashage du mot de passe");
+        }
+        const newUser = await Model.users.create({name, firstname, email, password : hashedPassword, role: "user"  });
+        if(!newUser){
+            throw new Error("Erreur lors de la création du compte");
+        }
+        return APIResponse(response, newUser, "User created", 201);
+    }
+    catch (error : unknown) {
+        APIResponse(response, error, "error", 400);
     }
 }
 

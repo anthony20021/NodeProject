@@ -1,7 +1,7 @@
 import { findAllCountry, findCountryById, createCountry, deleteCountry, updateCountry } from "./countryModel";
 import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocation } from "./locationsModel";
 import { getAllAccesses, findAccessById, findAccessesByCountryId, findAccessesByLocationId, findAccessesByLocationAndCountryId, deleteAccess, updateAccess, createAccess } from "./accessModel";
-import { getAllUsers, findUserById, createUser, deleteUser, updateUser } from "./usersModel";
+import { getAllUsers, findUserById, createUser, deleteUser, updateUser, findByCredentials } from "./usersModel";
 
 export default {
     "country" : {
@@ -27,6 +27,7 @@ export default {
         "create" : createUser,
         "delete": deleteUser,
         "update": updateUser,
+        "find" : findByCredentials
     },
 
     "access" : {
