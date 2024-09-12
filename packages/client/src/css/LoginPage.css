@@ -1,0 +1,95 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #001F31;
+    min-height: 100vh;
+    background-color: #E9F2EA
+    ;
+}
+
+.login-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-title {
+    font-family: 'Lobster', sans-serif;
+    color: #001F31;
+    text-align: center;
+    padding: 50px 50px 50px 50px;
+}
+
+.form-title{
+    font-family: 'Lobster', sans-serif;
+    font-size: 20px;
+    color: #001F31;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.login-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 100px 40px 100px;
+    gap: 30px;
+    border: 2px solid #001F31;
+    border-radius: 12px;
+    background-color: #54A49C;
+}
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 100px 40px 100px;
+    gap: 30px;
+    border: 2px solid #001F31;
+    border-radius: 12px;
+    background-color: #54A49C;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 10px;
+}
+
+.signup-validation-button {
+    margin-top: 50px;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 20px 20px 20px;
+    padding: 40px 100px 40px 100px;
+    gap: 30px;
+    border: 2px solid #001F31;
+    border-radius: 12px;
+    background-color: #54A49C;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 10px;
+}
+
+.signup-validation-button {
+    margin-top: 50px;
+}
+
+.login-validation-button {
+    margin-top: 50px;
+}
