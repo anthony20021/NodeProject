@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Button from '../components/Button';
 import Input from '../components/Input';
 
-import '../css/LoginPage.css';
+import "../css/LoginPage.css";
 
 const LoginPage = () => {
     const [formData, setFormData] = useState({
@@ -23,9 +24,23 @@ const LoginPage = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: ajouter la logique pour envoyer les données du formulaire
+        try {
+            const response = await axios.post("/user/login", {
+                email: email,
+                password: password
+            },
+            {
+                withCredentials: true
+            });
+            console.log("Connexion réussie", response.data);
+
+        } catch (error) {
+            if (error) {
+                console.error(error.message);
+            }
+        }
     };
 
     const { lastName, firstName, email, password, confirmPassword } = formData;
@@ -33,16 +48,38 @@ const LoginPage = () => {
     const [visibleSection, setVisibleSection] = useState('');
 
     const handleSignupClick = () => {
-        setVisibleSection('signup');
+        setVisibleSection("signup");
     };
 
     const handleLoginClick = () => {
-        setVisibleSection('login');
+        setVisibleSection("login");
     };
 
-    const handleSignupValidation = (e) => {
+    const handleSignupValidation = async (e) => {
         e.preventDefault();
-        setVisibleSection('login');
+    
+        try {
+            if (password !== confirmPassword) {
+                throw new Error("Les mots de passe ne correspondent pas.");
+            }
+
+            else{
+                const response = await axios.post("/user/register", {
+                    name: lastName,
+                    firstname: firstName,
+                    email: email,
+                    password: password,
+                }); 
+                console.log("Inscription réussie", response.data);
+    
+                setVisibleSection("login");
+            }
+    
+        } catch (error) {
+            if (error) {
+                console.error(error);
+            }
+        }
     };
 
     const navigate = useNavigate();
