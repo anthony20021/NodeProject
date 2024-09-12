@@ -27,7 +27,9 @@ export const validationAccessMiddleware = (req : Request, res : Response, next :
 export const validationUserMiddleware = (req : Request, res : Response, next : NextFunction) => {
     const { name, firstname, email, password } = req.body;
     if (!name || !firstname || !email || !password) {
-        return res.status(400).json({ message: "Formulaire incorrect" });
+        if(password && password.length < 8){
+            return res.status(400).json({ message: "Formulaire incorrect" });
+        }
     }
     next();
 }
