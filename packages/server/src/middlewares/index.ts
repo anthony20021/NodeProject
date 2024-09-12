@@ -7,7 +7,7 @@ import {
     validationAccessMiddleware, 
     validationCountriesMiddleware,
   } from "./controlMiddleware";
-import { authMiddleware } from "./authMiddleware";
+import { authMiddleware, isAdmin } from "./authMiddleware";
 
 export default {
     "error" : errorModule,
@@ -19,4 +19,5 @@ export default {
     "validationAccess" : validationAccessMiddleware,
     "validationCountries" : validationCountriesMiddleware,
     "auth" : authMiddleware,
+    "isAdmin" : isAdmin
 }
