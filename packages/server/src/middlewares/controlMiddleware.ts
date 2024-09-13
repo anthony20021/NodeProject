@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { userValidation, locationValidation, countriesValidation, accessesValidation } from "../validation/validation";
 import { z } from "zod";
+import { APIResponse } from "../utils/response";
 
 export const validationLocationMiddleware = (req : Request, res : Response, next : NextFunction) => {
     try {
@@ -50,11 +51,7 @@ export const validationUserMiddleware = (req: Request, res: Response, next: Next
         next();
     } catch (error) {
         if (error instanceof z.ZodError) {
-            // Extraire le premier message d'erreur
-            const firstError = error.errors[0];
-            const errorMessage = firstError.message || "Formulaire incorrect";
-
-            return res.status(400).json({ message: errorMessage });
+            return APIResponse(res, error.errors, "Formulaire incorrect", 400);
         } else {
             console.error(error);
             return res.status(500).json({ message: "Erreur interne du serveur" });
