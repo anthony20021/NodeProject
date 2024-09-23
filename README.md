@@ -23,25 +23,18 @@ Assurez-vous d'avoir installé :
 
 Vous pouvez installer pnpm avec la commande suivante :
 
-bash
-
+```bash
 npm install -g pnpm
-
-Fichier .env
+```
 
 Pensez à créer un fichier .env à la racine du projet pour stocker les variables d'environnement telles que les clés d'API ou les configurations spécifiques au projet. Par exemple :
 
-makefile
-
 PORT=3000
-
-Le fichier .env n'est généralement pas versionné dans Git pour des raisons de sécurité. Vous pouvez toutefois fournir un fichier .env.example contenant des exemples de valeurs ou des variables à remplir pour faciliter la configuration du projet.
-Exemple de commande pour lancer le projet
 
 Pour démarrer le serveur et le front-end simultanément, utilisez la commande suivante après avoir installé les dépendances :
 
-bash
-
+```bash
 pnpm run dev
+```
 
 Cette commande utilise concurrently pour lancer à la fois le serveur backend et le front-end.
