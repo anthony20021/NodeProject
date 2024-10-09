@@ -7,4 +7,5 @@ export const users = pgTable('users', {
     email: varchar('email').unique().notNull(),
     password: varchar('password').notNull(),
     role: varchar('role').notNull(),  
+    refreshToken: varchar('refreshToken')
 });
