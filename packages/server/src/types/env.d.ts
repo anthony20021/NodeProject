@@ -5,5 +5,5 @@ export interface IEnv {
     REFRESH_JWT_SECRET: string;
     JWT_EXPIRATION_SECRET: string;
     ORIGIN: string;
-    MONGO_URI: string;
+    DATABASE_URL: string;
 }
