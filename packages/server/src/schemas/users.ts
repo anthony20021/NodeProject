@@ -1,12 +1,10 @@
-import mongoose, { Schema } from "mongoose";
-import { IUser } from "../types/IUser";
+import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 
-const userSchema: Schema = new Schema({
-    name: { type: String, required: true },
-    firstname: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true, select: false },
-    role: { type: String, required: true}
+export const users = pgTable('users', {
+    id: uuid('id').defaultRandom().notNull().primaryKey(),
+    name: varchar('name'),
+    firstname: varchar('firstname'),
+    email: varchar('email').unique().notNull(),
+    password: varchar('password').notNull(),
+    role: varchar('role').notNull(),  
 });
-
-export default mongoose.model<IUser>('User', userSchema);
