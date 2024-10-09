@@ -1,7 +1,7 @@
 import { createLogger, format, transports } from "winston";
 
 //logger configuration
-const logger = createLogger({
+export const logger = createLogger({
     level: "info",
     format: format.combine(
         format.colorize(),
@@ -13,8 +13,7 @@ const logger = createLogger({
     transports: [
         new transports.Console(),
         new transports.File({ filename: 'logs/error.log', level: 'error' }),
+        new transports.File({ filename: 'logs/infos.log', level: 'info' }),
         new transports.File({ filename: 'logs/combined.log' })
     ],
 });
-
-export default logger;
