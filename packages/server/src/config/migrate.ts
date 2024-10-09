@@ -1,5 +1,5 @@
-import { Pool } from "pg"; // Pool nous prmet de créer un pool de connexions à la db pgsql
-import { migrate } from "drizzle-orm/node-postgres/migrator"; // migrate est une fonction de drizzle qui permet de migrer la db
+import { Pool } from "pg"; 
+import { migrate } from "drizzle-orm/node-postgres/migrator"; 
 import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres/driver"; 
 
 import { env } from "./env"

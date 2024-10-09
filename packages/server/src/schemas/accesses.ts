@@ -1,10 +1,8 @@
-import mongoose, { Schema, Types } from "mongoose";
-import { IAccess } from "../types/IAccess";
+import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
+import { countries, locations } from "./";
 
-const accessSchema: Schema = new Schema({
-    locationId: { type: Types.ObjectId, required: true, ref: 'Location'  },
-    countryId: { type: Types.ObjectId, required: true, ref: 'Country'  },
-    category: { type: String, required: true}
+export const accesses = pgTable('accesses', {
+    locationId: uuid('location_id').notNull().references(() => locations.id, { onDelete: "cascade" }),    
+    type: varchar('type').notNull(),                         
+    countryId: uuid('country_id').notNull().references(() => countries.id, { onDelete: "cascade" }),         
 });
-
-export default mongoose.model<IAccess>('Access', accessSchema);

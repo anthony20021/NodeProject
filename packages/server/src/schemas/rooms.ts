@@ -1,8 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { ICountry } from "../types/ICountry";
+import { pgTable, uuid } from "drizzle-orm/pg-core";
 
-const countrySchema: Schema = new Schema({
-    
+export const rooms = pgTable('rooms', {
+    id: uuid('id').defaultRandom().notNull().primaryKey()
 });
-
-export default mongoose.model<ICountry>('Country', countrySchema);

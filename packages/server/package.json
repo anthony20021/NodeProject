@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "npx ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "generate": "drizzle-kit generate --config=src/config/drizzle.ts",
+    "migrate": "tsx -r dotenv/config src/config/migrate.ts",
+    "studio": "drizzle-kit studio --config=src/config/drizzle.ts"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +40,7 @@
     "drizzle-kit": "^0.25.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2"
   }
 }

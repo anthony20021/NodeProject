@@ -1,11 +1,9 @@
-import mongoose, { Schema } from "mongoose";
-import { ICountry } from "../types/ICountry";
+import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 
-const countrySchema: Schema = new Schema({
-    name: { type: String, required: true, unique: true },
-    capital: { type: String, required: true, unique: true  },
-    languagesSpoken: { type: Array, required: true},
-    continent: { type: String, required: true},
-});
-
-export default mongoose.model<ICountry>('Country', countrySchema);
+export const countries = pgTable('countries', {
+    id: uuid('id').defaultRandom().notNull().primaryKey(),
+    name: varchar('name').notNull(),                                 
+    capital: uuid('capital').notNull(), 
+    languagesSpoken: varchar('languages_spoken'),  
+    continent: varchar('continent').notNull()        
+})
