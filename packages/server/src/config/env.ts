@@ -5,8 +5,10 @@ dotenv.config();
 
 export const env: IEnv = {
     PORT: parseInt(process.env.PORT || "3000"),
-    NODE_ENV: process.env.NODE_ENV as 'development' | 'production' | 'test',
+    NODE_ENV: process.env.NODE_ENV as "development" | "production" | "test",
     JWT_SECRET: process.env.JWT_SECRET || "¡SecretSecret!",
+    REFRESH_JWT_SECRET: process.env.REFRESH_TOKEN_SECRET || "¡refreshRefresh!",
+    JWT_EXPIRATION_SECRET: process.env.JWT_EXPIRATION || "30m",
     ORIGIN: process.env.ORIGIN || "http://localhost:5173",
     MONGO_URI: process.env.MONGO_URI || "mongodb://localhost:27017/express"
 };
