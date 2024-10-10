@@ -15,7 +15,4 @@ yyyy-26-04 11:26:26 [[32minfo[39m] [POST] /login - Tentative de connexion
 yyyy-26-04 11:26:26 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
 yyyy-26-04 11:26:32 [[32minfo[39m] [POST] /login - Tentative de connexion
 yyyy-26-04 11:26:32 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
-yyyy-34-04 11:34:25 [[32minfo[39m] [POST] /login - Tentative de connexion
-yyyy-34-04 11:34:25 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
-yyyy-34-04 11:34:51 [[32minfo[39m] [POST] /login - Tentative de connexion
-yyyy-34-04 11:34:51 [[32minfo[39m] Utilisateur connecté
+

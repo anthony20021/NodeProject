@@ -6,7 +6,7 @@ const { JWT_SECRET } = env;
 
 
 export const authMiddleware = (request: Request, response: Response, next: NextFunction) => {
-    const token = request.cookies.token;
+    const token = request.cookies.accessToken;
     if (!token)
         return APIResponse(response, null, "Vous n'êtes pas authentifié", 401);
     try {
@@ -19,7 +19,7 @@ export const authMiddleware = (request: Request, response: Response, next: NextF
 }
 
 export const isAdmin = (request: Request, response: Response, next: NextFunction) => {
-    const token = request.cookies.token;
+    const token = request.cookies.accessToken;
 
     if (!token) {
         return APIResponse(response, null, "Access denied. No token provided.", 401);
