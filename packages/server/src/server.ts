@@ -4,15 +4,20 @@ import routes from "./routes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { env } from "./config/env";
+import http from "http";
+import { initializeSocketServer } from "./sockets/server";
 
 const {PORT, ORIGIN} = env;
 const app = express();
+const server = http.createServer(app);
+initializeSocketServer(server); 
 
 app.use(cors({
     origin: ORIGIN,
     credentials: true,
     methods: ["GET", "PUT", "POST", "DELETE", "PATH" ],
 }));
+
 
 app.use(cookieParser());
 
@@ -25,7 +30,7 @@ app.use(routes);
 
 app.use(Middlewares.error);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 })
 

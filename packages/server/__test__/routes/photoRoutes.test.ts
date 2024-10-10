@@ -1,0 +1,1 @@
+import { authMiddleware } from '../../src/routes/photoRoutes';

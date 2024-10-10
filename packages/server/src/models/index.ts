@@ -2,6 +2,8 @@ import { findAllCountry, findCountryById, createCountry, deleteCountry, updateCo
 import { getAllLocations, findLocationById, findLocationByCountryId, createLocation, deleteLocation, updateLocation } from "./locationsModel";
 import { getAllAccesses, findAccessById, findAccessesByCountryId, findAccessesByLocationId, findAccessesByLocationAndCountryId, deleteAccess, updateAccess, createAccess } from "./accessModel";
 import { getAllUsers, findUserById, createUser, deleteUser, updateUser, findByCredentials } from "./usersModel";
+import { deleteMessage, sendMessage, changeMessage } from "./message.model";
+import { deleteRoom, getAllMessagesRoom, newRoom } from "./roomModel";
 
 export default {
     "country" : {
@@ -39,5 +41,17 @@ export default {
         "create" : createAccess,
         "delete" : deleteAccess,
         "update" : updateAccess,
+    },
+
+    "messages" : {
+        "send" : sendMessage,
+        "delete" : deleteMessage,
+        "change" : changeMessage,
+    },
+
+    "rooms" : {
+        "create" : newRoom,
+        "getMessages" : getAllMessagesRoom,
+        "delete" : deleteRoom,
     }
 }

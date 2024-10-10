@@ -1,0 +1,54 @@
+yyyy-15-04 11:15:34 [[32minfo[39m] [POST] /users - Création d'un nouvel utilisateur
+yyyy-15-04 11:15:34 [[32minfo[39m] Utilisateur créé
+yyyy-15-04 11:15:37 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-15-04 11:15:37 [[32minfo[39m] Utilisateur connecté
+yyyy-15-04 11:15:37 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-15-04 11:15:37 [[32minfo[39m] [GET] /users - Récupère la liste de toutes les locations
+yyyy-15-04 11:15:37 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-15-04 11:15:37 [[32minfo[39m] Liste de tous les pays récupérée
+yyyy-15-04 11:15:43 [[32minfo[39m] [POST] /logout - Utilisateur déconnecté
+yyyy-25-04 11:25:30 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-25-04 11:25:30 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
+yyyy-25-04 11:25:35 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-25-04 11:25:35 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
+yyyy-26-04 11:26:26 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-26-04 11:26:26 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
+yyyy-26-04 11:26:32 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-26-04 11:26:32 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
+
+yyyy-02-04 12:02:22 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-02-04 12:02:23 [[32minfo[39m] Utilisateur connecté
+yyyy-02-04 12:02:23 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-02-04 12:02:23 [[32minfo[39m] [GET] /users - Récupère la liste de toutes les locations
+yyyy-02-04 12:02:23 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-02-04 12:02:23 [[32minfo[39m] Liste de tous les pays récupérée
+yyyy-02-04 12:02:27 [[32minfo[39m] [POST] /logout - Utilisateur déconnecté
+yyyy-24-04 13:24:21 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-24-04 13:24:22 [[32minfo[39m] Utilisateur connecté
+yyyy-24-04 13:24:22 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-24-04 13:24:22 [[32minfo[39m] [GET] /users - Récupère la liste de toutes les locations
+yyyy-24-04 13:24:22 [[32minfo[39m] [GET] - Récupère la liste de tous les pays
+yyyy-24-04 13:24:22 [[32minfo[39m] Liste de tous les pays récupérée
+yyyy-26-04 13:26:45 [[32minfo[39m] [POST] /login - Tentative de connexion
+yyyy-26-04 13:26:45 [[32minfo[39m] Utilisateur connecté
+yyyy-30-04 13:30:19 [[32minfo[39m] Creating room
+yyyy-30-04 13:30:46 [[32minfo[39m] Room : c501de97-baa4-4644-9e7f-8bd4c675b696 joined
+yyyy-44-04 13:44:20 [[32minfo[39m] deleted room
+yyyy-44-04 13:44:20 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « c501de97-baa4-4644-9e7f-8bd4c675b696
+ »
+yyyy-47-04 13:47:03 [[32minfo[39m] deleted room
+yyyy-47-04 13:47:03 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « c501de97-baa4-4644-9e7f-8bd4c675b696
+ »
+yyyy-47-04 13:47:12 [[32minfo[39m] deleted room
+yyyy-47-04 13:47:12 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « "c501de97-baa4-4644-9e7f-8bd4c675b696"
+ »
+yyyy-47-04 13:47:17 [[32minfo[39m] deleted room
+yyyy-47-04 13:47:17 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « c501de97-baa4-4644-9e7f-8bd4c675b696
+ »
+yyyy-48-04 13:48:04 [[32minfo[39m] deleted room
+yyyy-48-04 13:48:04 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « c501de97-baa4-4644-9e7f-8bd4c675b696
+ »
+yyyy-51-04 13:51:21 [[32minfo[39m] deleted room
+yyyy-51-04 13:51:21 [[31merror[39m] Erreur : impossible de supprimer la room : syntaxe en entrée invalide pour le type uuid : « c501de97-baa4-4644-9e7f-8bd4c675b696
+ »
+yyyy-51-04 13:51:33 [[32minfo[39m] deleted room

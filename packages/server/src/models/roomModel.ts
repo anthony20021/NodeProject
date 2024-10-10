@@ -33,3 +33,13 @@ export const getAllMessagesRoom = (roomId: string) => {
         throw new Error(`Impossible de récupérer les messages de la room: ${error.message}`);
     }
 }
+
+export const deleteRoom = (roomId: string) => {
+    try {
+        console.log(roomId)
+        return db.delete(rooms).where(eq(rooms.id, roomId)).execute();
+    } catch (error : any) {
+        logger.error(`Erreur lors de la suppression: ${error.message}`);
+        throw new Error(`Erreur lors de la suppression: ${error.message}`);
+    }
+}

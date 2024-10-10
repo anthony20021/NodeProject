@@ -1,6 +1,6 @@
 import { APIResponse, logger } from "../utils";
 import { Request, Response} from 'express';
-import Model from "../models/index";
+import Model from "../models";
 
 export const getAllAccesses = async (request : Request, response : Response) => {
     try {
