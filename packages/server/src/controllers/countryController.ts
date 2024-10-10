@@ -1,8 +1,6 @@
 import Model from "../models/index";
 import { APIResponse, logger } from "../utils";
-import crypto from "crypto";
 import { Request, Response} from 'express';
-import { Types } from "mongoose";
 
 export const getAllCountries = async (request : Request, response : Response) => {
     try {
@@ -22,7 +20,7 @@ export const getCountryById = async (request : Request, response : Response) => 
         logger.info("[GET] - Récupération d'un pays par son ID");
 
         const id = request.params.id;
-        const country = await Model.country.where( new Types.ObjectId(id));
+        const country = await Model.country.where(id);
 
         if(country){
             logger.info("Pays récupéréré");
@@ -60,7 +58,7 @@ export const deleteCountry = async (request : Request, response : Response) => {
 
         const id = request.params.id;
 
-        await Model.country.delete(new Types.ObjectId(id));
+        await Model.country.delete(id);
 
         logger.info("Pays supprimé");
         APIResponse(response, null, "country deleted", 200);
@@ -77,7 +75,7 @@ export const updateCountry = async (request : Request, response : Response) => {
         const id = request.params.id;
         const newCountry = request.body;
 
-        await Model.country.update(new Types.ObjectId(id), newCountry);
+        await Model.country.update(id, newCountry);
 
         logger.info("Données du pays mises à jour");
         APIResponse(response, newCountry, "country updated", 200);

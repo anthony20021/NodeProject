@@ -1,7 +1,6 @@
 import Model from "../models/index";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
-import { Types } from "mongoose";
 import { hashPassword, verifyPassword, logger, APIResponse } from "../utils";
 import { env } from "../config/env";
 
@@ -16,7 +15,6 @@ export const getUsers = async (response: Response) => {
         APIResponse(response, users, "All users", 200);
     } catch (error : any) {
         logger.error(`Erreur lors de la récupération de la liste de tous les utilisateurs: ${error.message}`);
-
         APIResponse(response, error, "error", 500);
     }
 }
@@ -26,7 +24,7 @@ export const getUsersById = async (request: Request, response: Response) => {
         logger.info(`[GET] - Récupération d'un utilisateur par ID`);
 
         const id = request.params.id;
-        const user = await Model.users.where(new Types.ObjectId(id));
+        const user = await Model.users.where(id);
     
         if (user){
             logger.info("Utilisateur trouvé");
@@ -40,7 +38,6 @@ export const getUsersById = async (request: Request, response: Response) => {
 
     } catch (error : any) {
         logger.error("Erreur lors de la récupération de l'utilisateur: ${error.message}");
-
         APIResponse(response, error, "error", 500);
     }
 }
@@ -60,7 +57,7 @@ export const createAUser = async (request: Request, response: Response) => {
 
         const hashedPassword = await hashPassword(password);
 
-        if(hashedPassword === null){
+        if(!hashedPassword){
             throw new Error("Erreur lors du hashage du mot de passe");
         }
 
@@ -100,7 +97,7 @@ export const login = async (req : Request, res : Response) => {
             return APIResponse(res, null, "Mot de passe incorrect", 401);
         }
 
-        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
         res.cookie("token", token, { 
             httpOnly: true,
             sameSite: 'strict',
@@ -136,7 +133,7 @@ export const deleteUserById = async (request: Request, response: Response) => {
         
         const id = request.params.id;
         
-        await Model.users.delete(new Types.ObjectId(id));
+        await Model.users.delete(id);
         
         logger.info("Utilisateur supprimé");
 
@@ -155,7 +152,7 @@ export const updateUser = async (request: Request, response: Response) => {
         const id = request.params.id;
         const user = request.body;
     
-        await Model.users.update(new Types.ObjectId(id), user);
+        await Model.users.update(id, user);
         
         logger.info("Utilisateur mis à jour");
 

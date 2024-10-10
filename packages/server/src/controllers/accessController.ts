@@ -1,6 +1,5 @@
 import { APIResponse, logger } from "../utils";
 import { Request, Response} from 'express';
-import { Types } from "mongoose";
 import Model from "../models/index";
 
 export const getAllAccesses = async (request : Request, response : Response) => {
@@ -22,7 +21,7 @@ export const getAccessById = async (request : Request, response : Response) => {
         logger.info("[GET] - Récupération d'un accès par son ID");
 
         const id = request.params.id;
-        const access = await Model.access.where(new Types.ObjectId(id));
+        const access = await Model.access.where(id);
 
         if(access){
             logger.info("Accès récupéréré");
@@ -61,7 +60,7 @@ export const deleteAccess = async (request : Request, response : Response) => {
 
         const id = request.params.id;
 
-        await Model.access.delete(new Types.ObjectId(id));
+        await Model.access.delete(id);
 
         logger.info("Accès supprimé");
         APIResponse(response, null, "Access deleted", 200);
@@ -78,7 +77,7 @@ export const updateAccess = async (request : Request, response : Response) => {
         const id = request.params.id;
         const newAccess = request.body;
 
-        await Model.access.update(new Types.ObjectId(id), newAccess);
+        await Model.access.update(id, newAccess);
 
         logger.info("Données de l'accès mises à jour");
         APIResponse(response, newAccess, "Access updated", 200);
@@ -94,9 +93,9 @@ export const getAccessByLocationIdAndCountryId = async (request : Request, respo
 
         const idLocation = request.params.idLocation;
         const idCountry = request.params.idCountry;
-        const access = await Model.access.whereCountryLocation(new Types.ObjectId(idLocation), new Types.ObjectId(idCountry));
+        const access = await Model.access.whereCountryLocation(idLocation, idCountry);
 
-        if(access.length > 0) {
+        if(access) {
             logger.info("Accès trouvés");
             APIResponse(response, access, "Access found", 200);
         }
@@ -115,9 +114,9 @@ export const getAccessByLocationId = async (request : Request, response :  Respo
         logger.info("[GET] - Récupération des accès par ID de localisation");
 
         const idLocation = request.params.id;
-        const access = await Model.access.whereLocation(new Types.ObjectId(idLocation));
+        const access = await Model.access.whereLocation(idLocation);
 
-        if(access.length > 0) {
+        if(access) {
             logger.info("Accès trouvés");
             APIResponse(response, access, "Access found", 200);
         }
@@ -136,9 +135,9 @@ export const getAccessByCountryId = async (request : Request, response : Respons
         logger.info("[GET] - Récupération des accès par ID de pays");
 
         const idCountry = request.params.id;
-        const access = await Model.access.whereCountry(new Types.ObjectId(idCountry));
+        const access = await Model.access.whereCountry(idCountry);
 
-        if(access.length > 0) {
+        if(access) {
             logger.info("Accès trouvés");
             APIResponse(response, access, "Access found", 200);
         }

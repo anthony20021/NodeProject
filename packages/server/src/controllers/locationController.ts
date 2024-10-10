@@ -3,7 +3,6 @@ import { APIResponse, logger } from "../utils";
 import fs from "fs";
 import path from "path";
 import { Request, Response} from 'express';
-import { Types } from "mongoose";
 
 
 const uploadDir = path.join(__dirname, '../uploads');
@@ -26,7 +25,7 @@ export const getLocationById = async (request : Request, response : Response) =>
         logger.info("[GET] - Récupération d'une location par son ID");
 
         const id = request.params.id;
-        const location = await Model.locations.where(new Types.ObjectId(id));
+        const location = await Model.locations.where(id);
 
         if (location){
             logger.info("Location trouvée");
@@ -48,7 +47,7 @@ export const findLocationByCountry = async (request : Request, response : Respon
 
         logger.info(`[GET] - Récupération des locations pour le pays ${countryId}`);
 
-        const locations = await Model.locations.fromWhere(new Types.ObjectId(countryId));
+        const locations = await Model.locations.fromWhere(countryId);
 
         if (locations && locations.length > 0){
             logger.info(`Locations trouvées pour le pays ${countryId}`);
@@ -87,7 +86,7 @@ export const deleteLocationById = async (request : Request, response : Response)
 
         logger.info(`[DELETE] - Suppression de la location avec l'ID ${id}`);
 
-        await Model.locations.delete(new Types.ObjectId(id));
+        await Model.locations.delete(id);
 
         logger.info("Location supprimée avec l'ID");
         APIResponse(response, null, "Location supprimée", 204);
@@ -104,7 +103,7 @@ export const updateLocation = async (request : Request, response :  Response) =>
         const id = request.params.id;
         const location = request.body;
 
-        await Model.locations.update(new Types.ObjectId(id), location);
+        await Model.locations.update(id, location);
 
         logger.info("Location mise à jour avec succès");
         APIResponse(response, location, "Location updated", 200);
@@ -120,7 +119,7 @@ export const getPhoto = async (request : Request, response : Response) => {
 
         logger.info(`[GET] - Récupération de la photo pour la location ${id}`);
 
-        const location = await Model.locations.where(new Types.ObjectId(id));
+        const location = await Model.locations.where(id);
         
         if (location) {
             logger.info("Photo trouvée");
