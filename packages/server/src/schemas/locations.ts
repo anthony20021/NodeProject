@@ -3,6 +3,7 @@ import { countries } from "./";
 
 export const locations = pgTable('locations', {
     id: uuid('id').defaultRandom().notNull().primaryKey(),
+    name: varchar('name').notNull(),
     freeEntry: boolean('content').notNull(),                                
     price: integer('author_id').notNull(),   
     type: varchar('type').notNull(),      

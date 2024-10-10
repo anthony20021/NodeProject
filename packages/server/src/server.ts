@@ -3,7 +3,6 @@ import Middlewares from "./middlewares";
 import routes from "./routes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { connectDB } from "./config/database";
 import { env } from "./config/env";
 
 const {PORT, ORIGIN} = env;
@@ -16,7 +15,6 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
-connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

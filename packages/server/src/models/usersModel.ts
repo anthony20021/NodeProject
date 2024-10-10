@@ -1,69 +1,86 @@
-import { Types } from "mongoose";
+import { eq } from "drizzle-orm";
+import { db } from "../config/pool"; 
+import { NewUser, User } from "../entities/User"; 
+import { logger } from "../utils";
+import { users } from "../schemas"; 
 
-import User from "../schemas/users";
-import { IUser } from "../types/IUser";
-
-//CRUD to get all users
-export const getAllUsers = async (): Promise<IUser[]> => {
+// CRUD pour récupérer tous les utilisateurs
+export const getAllUsers = (): Promise<Partial<User>[]> => {
     try {
-        return User.find().select("name firstName email").exec();
-    } catch (error : any) {
-        console.error(error);
-        return error.message;
+        return db.query.users.findMany({
+            columns: {
+                id: true,
+                name: true,
+                firstname: true,
+            }
+        });
+    } catch (err: any) {
+        logger.error(`Erreur lors de la récupération des utilisateurs: ${err.message}`);
+        throw new Error("Erreur lors de la récupération des utilisateurs");
     }
 };
 
-//CRUD to get a user from it's id
-export const findUserById = async (id: Types.ObjectId): Promise<{ user: IUser } | null> => {
+// CRUD pour récupérer un utilisateur par son ID
+export const findUserById = (id: string, withRefreshToken?: boolean) => {
     try {
-        const user = await User.findById(id).select('name firstName email').exec()
-
-        if (!user) 
-            return null;
-        return {user: user.toObject()};
-
-    } catch (error : any) {
-        console.error(error);
-        return error.message;
+        return db.query.users.findFirst({
+            where: eq(users.id, id),
+            columns: {
+                id: true,
+                name: true,
+                firstname: true,
+                refreshToken: withRefreshToken
+            }
+        });
+    } catch (error: any) {
+        logger.error(`Erreur lors de récupération de l'utilisateur: ${error.message}`);
+        throw new Error("Erreur lors de l'ajout de l'utilisateur");
     }
 };
 
-//CRUD to create a new user
-export const createUser = (user: Partial<IUser>) => {
+export const createUser = (user: NewUser) => {
     try {
-        return User.create(user);
+        return db.insert(users).values(user).returning({ id: users.id }).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error(`Erreur lors de l'ajout de l'utilisateur: ${error.message}`);
+        throw new Error("Erreur lors de l'ajout de l'utilisateur");
     }
 };
 
-//CRUD to delete a user by it's id
-export const deleteUser = (id: Types.ObjectId): Promise<{ deletedCount: number }> => {
+export const deleteUser = (id: string) => {
     try {
-        return User.deleteOne({_id: id});
+        return db.delete(users).where(eq(users.id, id)).execute()
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error(`Erreur lors de la suppression de l'utilisateur: ${error.message}`);
+        throw new Error("Erreur lors de la suppression de l'utilisateur");
     }
 };
 
-//CRUD to update a user by it's id
-export const updateUser = async (id: Types.ObjectId, userData: Partial<IUser>) => {
+export const updateUser = (id: string, userData: Partial<User>) => {
     try {
-        return User.findByIdAndUpdate(id, userData, { new: true }).exec();
+        return db.update(users).set(userData).where(
+            eq(users.id, id)
+        ).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error(`Erreur lors de la mise à jour de l'utilisateur: ${error.message}`);
+        throw new Error("Erreur lors de la mise à jour de l'utilisateur");
     }
 };
 
-//CRUD to get a user by it's credentials
-export const findByCredentials = async (email: string): Promise<any> => {
+export const findByCredentials = (email: string) => {
     try {
-        return User.findOne({ email }).select("password").exec();
-    } catch (err) {
-        console.error(err);
-        return null;
+        return db.query.users.findFirst({
+            where: eq(users.email, email),
+            columns: {
+                id: true,
+                name: true,
+                firstname: true,
+                email: true,
+                password: true
+            }
+        });
+    } catch(err: any) {
+        logger.error(`Erreur lors de la récupération de l'utilisateur: ${err.message}`);
+        throw new Error("Erreur lors de la récupération de l'utilisateur");
     }
 }
