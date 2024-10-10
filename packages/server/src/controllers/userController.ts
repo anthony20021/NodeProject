@@ -160,7 +160,7 @@ export const updateUser = async (request: Request, response: Response) => {
         const id = request.params.id;
         const user = request.body;
     
-        await Model.users.update(id, user);
+        await Model.users.update({...user, id});
         
         logger.info("Utilisateur mis à jour");
 

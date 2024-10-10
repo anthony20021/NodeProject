@@ -1,4 +1,0 @@
-yyyy-33-04 11:33:36 [[31merror[39m] Erreur lors de la création de l'utilisateur: la colonne « refreshToken » de la relation « users » n'existe pas
-yyyy-34-04 11:34:28 [[31merror[39m] Erreur lors de la création de l'utilisateur: la colonne « refreshToken » de la relation « users » n'existe pas
-yyyy-36-04 11:36:24 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
-yyyy-37-04 11:37:19 [[31merror[39m] Erreur lors de la connexion: "expiresIn" should be a number of seconds or string representing a timespan eg: "1d", "20h", 60
