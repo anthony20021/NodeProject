@@ -1,48 +1,68 @@
-import { Types } from "mongoose";
-import countries from '../schemas/countries';
-import { ICountry } from '../types/ICountry';
+import { countries } from '../schemas';
+import { eq } from "drizzle-orm";
+import { db } from "../config/pool";
+import { logger } from "../utils/logger";
+import { Country, newCountry } from "../entities/Country"
 
-export const findAllCountry = async () => {
+
+export const findAllCountry = () => {
     try {
-        return await countries.find().exec();
+        return db.query.countries.findMany({
+            columns : {
+                id: true,
+                name: true,
+                capital: true,
+                languagesSpoken: true,
+                continent: true
+            }
+        })
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('Erreur lors de la récupération des countries', error);
+        throw new Error('Erreur lors de la récupération des countries');
     }
 }
 
-export const findCountryById = async (id : Types.ObjectId) => {
+export const findCountryById = (id : string) => {
     try {
-        return countries.findById(id).exec();
+        return db.query.countries.findFirst({
+            where: eq(countries.id, id),
+            columns : {
+                id: true,
+                name: true,
+                capital: true,
+                languagesSpoken: true,
+                continent: true
+            }
+        })
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('Erreur lors de la récupération du country', error);
+        throw new Error('Erreur lors de la récupération du country');
     }
 }
 
-export const createCountry = async (country : ICountry) => {
+export const createCountry = (country : newCountry) => {
     try {
-        return await countries.create(country);
+        return db.insert(countries).values(country).returning({ id: countries.id }).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('Erreur lors de la création du country', error);
+        throw new Error('Erreur lors de la création du country');
     }
 }
 
-export const deleteCountry = async (id : Types.ObjectId ) => {
+export const deleteCountry = (id : string) => {
     try {
-        return await countries.deleteOne({ _id: id });
+        return db.delete(countries).where(eq(countries.id, id)).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('Erreur lors de la suppression du country', error);
+        throw new Error('Erreur lors de la suppression du country');
     }
 }
 
-export const updateCountry = (id : Types.ObjectId, country : ICountry) => {
+export const updateCountry = (id : string, country : Country) => {
     try {
-        return countries.findByIdAndUpdate(id, country, { new: true }).exec();
+        return db.update(countries).set(country).where(eq(countries.id, id)).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la modification du country', error);
+        throw new Error('Erreur lors de la modification du country');
     }
 }

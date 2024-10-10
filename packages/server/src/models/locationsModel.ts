@@ -1,57 +1,95 @@
-import { Types } from "mongoose";
-import locations from "../schemas/locations";
-import { ILocation } from "../types/ILocation";
+import { locations } from "../schemas";
+import { eq } from "drizzle-orm";
+import { db } from "../config/pool";
+import { logger } from "../utils/logger";
+import { newLocation, Location } from "../entities/Location";
 
-export const getAllLocations = async () => {
+export const getAllLocations = () => {
     try {
-        return await locations.find().exec();
+        return db.query.locations.findMany({
+            columns: {
+                id: true,
+                freeEntry: true,
+                price: true,
+                type: true,
+                name: true,
+                photoName: true,
+                photoType: true,
+                countryId: true,
+            }
+        })
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la récupération des locations', error);
+        throw new Error('Erreur lors de la récupération des locations');
     }
 };
 
-export const findLocationById = async (id : Types.ObjectId) => {
+export const findLocationById = (id : string) => {
     try {
-        return await locations.findById(id).exec();
+        return db.query.locations.findFirst({
+            where: eq(locations.id, id),
+            columns: {
+                id: true,
+                freeEntry: true,
+                price: true,
+                type: true,
+                name: true,
+                photoName: true,
+                photoType: true,
+                countryId: true,
+            }
+        })
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la récupération de la location', error);
+        throw new Error('Erreur lors de la récupération de la location');
     }
 };
-export const findLocationByCountryId = async (id : Types.ObjectId) => {
+export const findLocationByCountryId = (id : string) => {
     try {
-        const location = await locations.find({ countryId: id }).exec();
-        return location;
+        return db.query.locations.findMany({
+            where: eq(locations.countryId, id),
+            columns: {
+                id: true,
+                freeEntry: true,
+                price: true,
+                type: true,
+                name: true,
+                photoName: true,
+                photoType: true,
+                countryId: true,
+            }
+        })
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la récupération de la location', error);
+        throw new Error('Erreur lors de la récupération de la location');
     }
 };
 
-export const createLocation = async (location : ILocation) => {
+export const createLocation = (location : newLocation) => {
     try {
-        return await locations.create(location);
+        return db.insert(locations).values(location).returning({ id: locations.id }).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la création de la location', error);
+        throw new Error('Erreur lors de la création de la location');
     }
 };
 
-export const deleteLocation = (id : Types.ObjectId) => {
+export const deleteLocation = (id : string) => {
     try {
-        return locations.deleteOne({ _id: id });
+        return db.delete(locations).where(eq(locations.id, id)).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la suppression de la location', error);
+        throw new Error('Erreur lors de la suppression de la location');
     }
 };
 
-export const updateLocation = (id : Types.ObjectId, location : ILocation) => {
+export const updateLocation = (id : string, location : Partial<Location>) => {
     try {
-        return locations.findByIdAndUpdate(id, location, { new: true }).exec();;
+        return db.update(locations).set(location).where(
+            eq(locations.id, id)
+        ).execute();
     } catch (error : any) {
-        console.error(error);
-        return error.message;
+        logger.error('erreur lors de la modification de la location', error);
+        throw new Error('Erreur lors de la modification de la location');
     }
 };
