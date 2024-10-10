@@ -31,7 +31,7 @@ export const refreshTokenMiddleware = async (req: Request, res: Response, next: 
         }
 
         // Vérifier l'utilisateur et son refreshToken
-        const user = await Model.users.where(userId);
+        const user = await Model.users.where(userId, true);
         if (!user || user.refreshToken !== refreshToken) {
             res.clearCookie("accessToken");
             res.clearCookie("refreshToken");
