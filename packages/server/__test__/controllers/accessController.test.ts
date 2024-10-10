@@ -1,1 +1,0 @@
-import Controllers from '../../src/controllers';
