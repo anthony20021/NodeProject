@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import { joinRoom, createRoom } from "./rooms";
+import { joinRoom, createRoom, deleteRoom } from "./rooms";
 import { postMessage, removeMessage, updateMessage } from "./messages";
 
 import { authenticateSocket } from "../cookies";
@@ -18,6 +18,7 @@ export function setupSocketEvents(io: Server) {
 
         socket.on("createRoom", () => createRoom(socket)); 
         socket.on("joinRoom", (roomId: string) => joinRoom(socket, roomId)); 
+        socket.on("deleteRoom", (roomId: string) => deleteRoom(socket, roomId));
 
         // Ecoute des events de messages d'envoi et de suppression
         socket.on("sendMessage", (data: { roomId: string, content: string }) => postMessage(socket, io, data, userId)); 
