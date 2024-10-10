@@ -98,12 +98,12 @@ export const findAccessesByLocationId = (id : string) => {
     }
 };
 
-export const findAccessesByLocationAndCountryId = (id: string) => {
+export const findAccessesByLocationAndCountryId = (idLocation: string, idCountry : string) => {
     try {
         return db.query.accesses.findFirst({
             where: and(
-                eq(accesses.locationId, id),
-                eq(accesses.countryId, id)
+                eq(accesses.locationId, idLocation),
+                eq(accesses.countryId, idCountry)
             ),
             columns: {
                 id: true,
