@@ -3,7 +3,7 @@ import { getAllLocations, findLocationById, findLocationByCountryId, createLocat
 import { getAllAccesses, findAccessById, findAccessesByCountryId, findAccessesByLocationId, findAccessesByLocationAndCountryId, deleteAccess, updateAccess, createAccess } from "./accessModel";
 import { getAllUsers, findUserById, createUser, deleteUser, updateUser, findByCredentials } from "./usersModel";
 import { deleteMessage, sendMessage, changeMessage } from "./message.model";
-import { getAllMessagesRoom, newRoom } from "./roomModel";
+import { deleteRoom, getAllMessagesRoom, newRoom } from "./roomModel";
 
 export default {
     "country" : {
@@ -51,6 +51,7 @@ export default {
 
     "rooms" : {
         "create" : newRoom,
-        "getMessages" : getAllMessagesRoom
+        "getMessages" : getAllMessagesRoom,
+        "delete" : deleteRoom,
     }
 }
