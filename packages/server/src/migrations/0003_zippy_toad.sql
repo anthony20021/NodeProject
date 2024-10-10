@@ -1,0 +1,1 @@
+ALTER TABLE "countries" ALTER COLUMN "capital" SET DATA TYPE varchar;

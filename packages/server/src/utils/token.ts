@@ -4,8 +4,8 @@ import { logger } from "./logger";
 
 const { JWT_SECRET, REFRESH_JWT_SECRET, JWT_EXPIRATION_SECRET, REFRESH_JWT_EXPIRATION_SECRET} = env;
 
-export const generateAccessToken = (userId: string): string => {
-    return jwt.sign({ userId }, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECRET });
+export const generateAccessToken = (role: string, userId: string): string => {
+    return jwt.sign({ userId, role }, JWT_SECRET, { expiresIn: JWT_EXPIRATION_SECRET });
 };
 
 export const generateRefreshToken = (userId: string): string => {

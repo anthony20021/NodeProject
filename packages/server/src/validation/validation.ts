@@ -29,7 +29,7 @@ export const countriesValidation = z.object({
 });
 
 export const accessesValidation = z.object({
-    idLocation : z.string().min(1, { message: "L'id de la ville est requis" }),
-    idCountry : z.string().min(1, { message: "L'id du pays est requis" }),
-    category : z.array(z.string()).min(1, { message: "Au moins une catégorie est requise" })
+    locationId : z.string().min(1, { message: "L'id de la ville est requis" }),
+    countryId : z.string().min(1, { message: "L'id du pays est requis" }),
+    type : z.array(z.string()).min(1, { message: "Au moins une catégorie est requise" })
 });

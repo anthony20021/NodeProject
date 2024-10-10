@@ -7,7 +7,7 @@ export const locations = pgTable('locations', {
     freeEntry: boolean('content').notNull(),                                
     price: integer('author_id').notNull(),   
     type: varchar('type').notNull(),      
-    photoName: varchar('photo_name').notNull(),   
-    photoType: varchar('photo_type').notNull(), 
+    photoName: varchar('photo_name'),   
+    photoType: varchar('photo_type'), 
     countryId: uuid('country_id').notNull().references(() => countries.id, { onDelete: "cascade" }),         
 })

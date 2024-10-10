@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { env } from "../config/env";
 import { APIResponse, verifyRefreshToken, generateAccessToken, generateRefreshToken } from "../utils";
 import Model from "../models/index";
+import { User } from "../entities/User";
 
 const { JWT_SECRET, NODE_ENV } = env;
 
@@ -31,7 +32,7 @@ export const refreshTokenMiddleware = async (req: Request, res: Response, next: 
         }
 
         // Vérifier l'utilisateur et son refreshToken
-        const user = await Model.users.where(userId, true);
+        const user = await Model.users.where(userId, true) as User;
         if (!user || user.refreshToken !== refreshToken) {
             res.clearCookie("accessToken");
             res.clearCookie("refreshToken");
@@ -39,7 +40,7 @@ export const refreshTokenMiddleware = async (req: Request, res: Response, next: 
         }
 
         // Générer de nouveaux tokens
-        const newAccessToken = generateAccessToken(userId);
+        const newAccessToken = generateAccessToken(user.role, userId);
         const newRefreshToken = generateRefreshToken(userId);
 
         // Mettre à jour le refreshToken en base de données

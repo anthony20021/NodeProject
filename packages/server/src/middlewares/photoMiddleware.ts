@@ -43,7 +43,7 @@ export const updateLocationWithPhotoInfo = async (req : Request, res : Response,
             return res.status(400).json({ message: 'No file uploaded' });
         }
 
-        const locationId = new Types.ObjectId(req.params.id);
+        const locationId = req.params.id;
 
         const locationToUpdate : any = Models.locations.where(locationId);
         if (!locationToUpdate) {

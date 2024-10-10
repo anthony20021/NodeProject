@@ -98,7 +98,7 @@ export const login = async (req : Request, res : Response) => {
             return APIResponse(res, null, "Mot de passe incorrect", 401);
         }
 
-        const accessToken = generateAccessToken(user.id);
+        const accessToken = generateAccessToken(user.role, user.id);
         const refreshToken = generateRefreshToken(user.id); 
 
 

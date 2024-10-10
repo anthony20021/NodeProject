@@ -67,7 +67,7 @@ const HomePage = () => {
         setSelectedLocation(selectedLocationId);
 
         //Le pays de destination se sémectionne automatiquement quand on choisi une location.
-        const selectedLoc = locations.find(location => location._id.toString() === selectedLocationId);
+        const selectedLoc = locations.find(location => location.id.toString() === selectedLocationId);
         if (selectedLoc) {
             setSelectedCountry(selectedLoc.countryId.toString());
         }
@@ -86,9 +86,10 @@ const HomePage = () => {
                 });
     
                 if (response.data && response.data.data && response.data.data.length > 0) {
+                    console.log(response.data.data[0]);
                     const matchingTransports = response.data.data.filter(
-                        item => item.idCountry.toString() === selectedDepartureCountry &&
-                                item.idLocation.toString() === selectedLocation
+                        item => item.countryId.toString() === selectedDepartureCountry &&
+                                item.locationId.toString() === selectedLocation
                     );
     
                     if (matchingTransports.length > 0) {
@@ -153,7 +154,7 @@ const HomePage = () => {
                                 label="Choisissez votre pays de départ"
                                 id="departureCountrySelection"
                                 options={departureCountries.map(country => ({
-                                    value: country._id.toString(),
+                                    value: country.id.toString(),
                                     label: country.name
                                 }))}
                                 onChange={handleDepartureCountryChange}
@@ -166,7 +167,7 @@ const HomePage = () => {
                                 label="Choisissez votre pays de destination"
                                 id="countrySelection"
                                 options={countries.map(country => ({
-                                    value: country._id.toString(),
+                                    value: country.id.toString(),
                                     label: country.name
                                 }))}
                                 onChange={handleCountryChange}
@@ -176,7 +177,7 @@ const HomePage = () => {
                                 label="Choisissez votre visite"
                                 id="locationSelection"
                                 options={filteredLocations.map(location => ({
-                                    value: location._id.toString(),
+                                    value: location.id.toString(),
                                     label: location.name
                                 }))}
                                 onChange={handleLocationChange}

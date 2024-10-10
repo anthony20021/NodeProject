@@ -77,7 +77,9 @@ export const findByCredentials = (email: string) => {
                 name: true,
                 firstname: true,
                 email: true,
-                password: true
+                password: true,
+                role: true,
+                refreshToken: true
             }
         });
     } catch(err: any) {
