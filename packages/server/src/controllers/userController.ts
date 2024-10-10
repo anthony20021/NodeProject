@@ -13,7 +13,8 @@ export const getUsers = async (response: Response) => {
     try {
         const users = await Model.users.get();
         APIResponse(response, users, "All users", 200);
-    } catch (error : unknown) {
+    } catch (error : any) {
+        logger.error(`Erreur lors de la récupération de la liste de tous les utilisateurs: ${error.message}`);
         APIResponse(response, error, "error", 500);
     }
 }
@@ -21,14 +22,17 @@ export const getUsers = async (response: Response) => {
 export const getUsersById = async (request: Request, response: Response) => {
     try {
         const id = request.params.id;
-        const user = await Model.users.where(new Types.ObjectId(id));
+        const user = await Model.users.where(id);
     
         if (user) 
             APIResponse(response, user, "User found", 200);
     
         else
             APIResponse(response, null, "User not found", 404);
-    } catch (error : unknown) {
+        }
+
+    } catch (error : any) {
+        logger.error("Erreur lors de la récupération de l'utilisateur: ${error.message}");
         APIResponse(response, error, "error", 500);
     }
 }
@@ -42,7 +46,8 @@ export const createAUser = async (request: Request, response: Response) => {
             return APIResponse(response, null, "Email already exist", 409);
         }
         const hashedPassword = await hashPassword(password);
-        if(hashedPassword === null){
+
+        if(!hashedPassword){
             throw new Error("Erreur lors du hashage du mot de passe");
         }
         const newUser = await Model.users.create({name, firstname, email, password : hashedPassword, role: "user"  });
@@ -67,7 +72,7 @@ export const login = async (req : Request, res : Response) => {
             return APIResponse(res, null, "Email or password incorrect", 401);
         }
 
-        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
         res.cookie("token", token, { 
             httpOnly: true,
             sameSite: 'strict',
@@ -91,9 +96,11 @@ export const logout = async (req : Request, res : Response) => {
 export const deleteUserById = async (request: Request, response: Response) => {
     try {
         const id = request.params.id;
-    
-        await Model.users.delete(new Types.ObjectId(id));
-    
+        
+        await Model.users.delete(id);
+        
+        logger.info("Utilisateur supprimé");
+
         APIResponse(response, null, "User deleted", 204);
     } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
@@ -105,8 +112,10 @@ export const updateUser = async (request: Request, response: Response) => {
         const id = request.params.id;
         const user = request.body;
     
-        await Model.users.update(new Types.ObjectId(id), user);
-    
+        await Model.users.update(id, user);
+        
+        logger.info("Utilisateur mis à jour");
+
         APIResponse(response, user, "User updated", 200);
     } catch (error : unknown) {
         APIResponse(response, error, "error", 500);
