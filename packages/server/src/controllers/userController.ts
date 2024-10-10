@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { hashPassword, verifyPassword, logger, APIResponse } from "../utils";
 import { env } from "../config/env";
+import { generateAccessToken, generateRefreshToken } from "../utils/token";
 
 const { JWT_SECRET, NODE_ENV } = env;
 
@@ -97,12 +98,19 @@ export const login = async (req : Request, res : Response) => {
             return APIResponse(res, null, "Mot de passe incorrect", 401);
         }
 
-        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
-        res.cookie("token", token, { 
+        const accessToken = generateAccessToken(user.id);
+        const refreshToken = generateRefreshToken(user.id); 
+
+
+        res.cookie("accessToken", accessToken, { 
             httpOnly: true,
             sameSite: 'strict',
             secure: NODE_ENV === "production",
          });
+
+         res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'strict', secure: NODE_ENV === "production" });
+
+         await Model.users.update( {id: user.id, refreshToken} );
 
          logger.info("Utilisateur connecté");
 

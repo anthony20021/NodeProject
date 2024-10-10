@@ -56,16 +56,17 @@ export const deleteUser = (id: string) => {
     }
 };
 
-export const updateUser = (id: string, userData: Partial<User>) => {
+export const updateUser = (user: Partial<User> & { id: string }) => {
     try {
-        return db.update(users).set(userData).where(
-            eq(users.id, id)
+        return db.update(users).set(user).where(
+            eq(users.id, user.id)
         ).execute();
-    } catch (error : any) {
-        logger.error(`Erreur lors de la mise à jour de l'utilisateur: ${error.message}`);
-        throw new Error("Erreur lors de la mise à jour de l'utilisateur");
+    } catch (err: any) {
+        logger.error(`Erreur lors de la modification de l'utilisateur: ${err.message}`);
+        throw new Error("Erreur lors de la modification de l'utilisateur");
     }
-};
+}
+
 
 export const findByCredentials = (email: string) => {
     try {
