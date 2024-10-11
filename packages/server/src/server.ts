@@ -15,7 +15,7 @@ initializeSocketServer(server);
 app.use(cors({
     origin: ORIGIN,
     credentials: true,
-    methods: ["GET", "PUT", "POST", "DELETE", "PATH"],
+    methods: ["GET", "PUT", "POST", "DELETE", "PATCH"],
 }));
 
 

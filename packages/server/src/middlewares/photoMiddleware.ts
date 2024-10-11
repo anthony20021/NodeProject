@@ -2,7 +2,6 @@ import path from 'path';
 import multer from 'multer';
 import Models from '../models/index';
 import { Request, Response, NextFunction } from 'express';
-import { Types } from 'mongoose';
 
 const generateRandomFileName = () => {
     const randomString : string = Math.random().toString(36).substring(2, 15);
